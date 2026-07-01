@@ -10,7 +10,7 @@ function Footer({ onNav }) {
   return (
     <footer style={{ background: 'var(--navy-700)', color: 'rgba(255,255,255,0.82)' }}>
       <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5) var(--space-6)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr 1fr', gap: 'var(--space-6)' }}>
+        <div className="ngis-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr 1fr', gap: 'var(--space-6)' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <img src="../../assets/ngis-logo-crest.png" alt="NGIS" style={{ width: 48, height: 48, objectFit: 'contain' }} />
@@ -58,7 +58,7 @@ function Footer({ onNav }) {
             </div>
           ))}
         </div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.14)', marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-xs)', color: 'rgba(255,255,255,0.6)' }}>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.14)', marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, fontSize: 'var(--text-xs)', color: 'rgba(255,255,255,0.6)' }}>
           <span>© 2026 NextGen International School. A project of Robotmea · Accredited by Robotron, South Korea.</span>
           <span>Privacy Policy · Terms · Safeguarding</span>
         </div>

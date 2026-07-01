@@ -3,26 +3,28 @@ function Header({ active, onNav }) {
   const { Button } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
   const links = ['Home', 'Academics', 'Faculty', 'Admissions', 'Gallery'];
+  const [open, setOpen] = React.useState(false);
+  const go = (r) => { setOpen(false); onNav(r); };
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50, background: 'var(--surface-navy)',
       borderBottom: '3px solid var(--brand)',
     }}>
-      <div style={{
+      <div className="ngis-header-row" style={{
         maxWidth: 'var(--container)', margin: '0 auto', padding: '0 var(--space-5)',
         height: 'var(--header-height)', display: 'flex', alignItems: 'center', gap: 'var(--space-6)',
       }}>
-        <a onClick={() => onNav('Home')} style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', textDecoration: 'none' }}>
+        <a onClick={() => go('Home')} style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', textDecoration: 'none' }}>
           <img src="../../assets/ngis-logo-crest.png" alt="NGIS"
             style={{ width: 44, height: 44, objectFit: 'contain' }} />
-          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1, whiteSpace: 'nowrap' }}>
-            <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 17, color: '#fff', letterSpacing: '0.01em' }}>NextGen International</span>
+          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }} className="ngis-header-title">
+            <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 17, color: '#fff', letterSpacing: '0.01em', whiteSpace: 'nowrap' }}>NextGen International</span>
             <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 10.5, color: 'var(--gold-500)', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase' }}>School</span>
           </span>
         </a>
         <nav style={{ display: 'flex', gap: 4, marginLeft: 'auto' }} className="ngis-nav">
           {links.map(l => (
-            <a key={l} onClick={() => onNav(l)} style={{
+            <a key={l} onClick={() => go(l)} style={{
               padding: '8px 14px', borderRadius: 'var(--radius-md)', cursor: 'pointer',
               fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 600,
               color: active === l ? '#fff' : 'rgba(255,255,255,0.78)',
@@ -34,8 +36,34 @@ function Header({ active, onNav }) {
             >{l}</a>
           ))}
         </nav>
-        <Button variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => onNav('Admissions')}>Apply</Button>
+        <Button className="ngis-header-cta" variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => go('Admissions')}>Apply</Button>
+        <button
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen(o => !o)}
+          className="ngis-nav-toggle"
+          style={{
+            display: 'none', marginLeft: 'auto', background: 'transparent', border: 'none',
+            padding: 8, cursor: 'pointer', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <Icon name={open ? 'x' : 'menu'} size={24} color="#fff" />
+        </button>
       </div>
+      {open && (
+        <nav className="ngis-nav-mobile" style={{
+          display: 'flex', flexDirection: 'column', padding: 'var(--space-3) var(--space-5) var(--space-5)',
+          background: 'var(--surface-navy)', borderTop: '1px solid rgba(255,255,255,0.12)', gap: 2,
+        }}>
+          {links.map(l => (
+            <a key={l} onClick={() => go(l)} style={{
+              padding: '12px 14px', borderRadius: 'var(--radius-md)', cursor: 'pointer',
+              fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 600,
+              color: active === l ? '#fff' : 'rgba(255,255,255,0.78)',
+              background: active === l ? 'rgba(255,255,255,0.12)' : 'transparent',
+            }}>{l}</a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

@@ -62,7 +62,7 @@ function Campuses({ heading = true }) {
             <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-body)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>The NGIS ETM experience, now at two locations across the city. Follow each campus for news, events and student life.</p>
           </div>
         )}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-7)' }}>
+        <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-7)' }}>
           {campuses.map(c => (
             <div key={c.name} style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: `4px solid var(--${c.accent}-500)`, borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
               {/* photo */}

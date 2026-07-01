@@ -65,7 +65,7 @@ function AcademicsScreen({ onNav }) {
 
   // Framework column renderer (the GAMES / STEAM diagram).
   const FrameworkColumn = ({ stageLabel, ages, name, items, accent, icon }) => (
-    <div style={{ flex: 1, minWidth: 280, background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: `4px solid var(--${accent}-500)`, borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
+    <div className="ngis-minw-280" style={{ flex: 1, minWidth: 280, background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: `4px solid var(--${accent}-500)`, borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 'var(--space-5)' }}>
         <div style={{ width: 52, height: 52, flexShrink: 0, borderRadius: 'var(--radius-lg)', background: `var(--${accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Icon name={icon} size={26} color={`var(--${accent}-600)`} />
@@ -92,14 +92,21 @@ function AcademicsScreen({ onNav }) {
   return (
     <main>
       {/* ===================== Header ===================== */}
-      <section style={{ background: NAVY_GRADIENT, position: 'relative', overflow: 'hidden' }}>
+      <section style={{
+        background: NAVY_GRADIENT,
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: 'calc(100vh - 72px)',
+        display: 'flex',
+        alignItems: 'center',
+      }}>
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.6 }}></div>
         <EduMotifs tone="navy" density="light" />
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)' }}>
+        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', width: '100%' }}>
           <EyebrowLabel color="gold">Educational Transformation Movement</EyebrowLabel>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-5xl)', fontWeight: 700, color: '#fff', margin: '14px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Our learning ecosystem</h1>
-          <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '16px 0 0', maxWidth: 660, lineHeight: 'var(--leading-normal)' }}>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Our learning ecosystem</h1>
+          <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 700, lineHeight: 'var(--leading-normal)' }}>
             An enabling ecosystem to make every child relevant — integrating emerging technologies, a STEAM curriculum and Islamic values, benchmarked to South Korean standards and aligned with the Pakistan National Curriculum.
           </p>
         </div>
@@ -114,7 +121,7 @@ function AcademicsScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>One continuous journey, ages 3 to 11</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-body)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>Every class carries an English, Korean and Arabic name — a signature of our trilingual identity and global outlook.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
             {grades.map((g, i) => {
               const accent = i % 2 === 0 ? 'navy' : 'red';
               return (
@@ -164,7 +171,7 @@ function AcademicsScreen({ onNav }) {
       <section style={{ background: 'var(--surface-page)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ ...PATTERNS.dotsLight, position: 'absolute', inset: 0, opacity: 0.4 }}></div>
         <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+          <div className="ngis-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: 'var(--space-8)', alignItems: 'center' }}>
             <div>
               <EyebrowLabel color="navy">The One-Book “System Model”</EyebrowLabel>
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>One book. Every subject. Zero heavy bags.</h2>
@@ -194,7 +201,7 @@ function AcademicsScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Research-backed pedagogy, built into every lesson</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>Our classrooms are not lecture halls — they are hubs where established learning science shapes how every child thinks, questions and creates.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-4)' }}>
             {pedagogies.map(p => (
               <div key={p.t} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)' }}>
                 <div style={{ width: 46, height: 46, borderRadius: 'var(--radius-md)', background: 'var(--red-500)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
@@ -213,7 +220,7 @@ function AcademicsScreen({ onNav }) {
         <EduMotifs tone="light" density="light" />
         <SectionDecor tone="light" />
         <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', alignItems: 'center', marginBottom: 'var(--space-7)' }}>
+          <div className="ngis-feature-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', alignItems: 'center', marginBottom: 'var(--space-7)' }}>
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: 'var(--gold-500)', color: 'var(--navy-700)', padding: '7px 15px', borderRadius: 'var(--radius-pill)', fontWeight: 700, fontSize: 'var(--text-sm)', marginBottom: 16 }}>
                 <Icon name="flask" size={16} color="var(--navy-700)" />Centre for Innovation &amp; Entrepreneurship
@@ -223,7 +230,7 @@ function AcademicsScreen({ onNav }) {
             </div>
             <PhotoFrame src="../../assets/photos/etm-garage.png" alt="The ETM Garage" label="The ETM Garage" icon="flask" accent="navy" ratio="16 / 10" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-4)' }}>
             {garage.map((g, i) => {
               const accent = i % 2 === 0 ? 'navy' : 'red';
               return (
@@ -259,7 +266,7 @@ function AcademicsScreen({ onNav }) {
           <div style={{ maxWidth: 880, margin: '0 auto var(--space-7)' }}>
             <PhotoFrame src="../../assets/photos/foq-quran.png" alt="Friends of Quran programme" accent="navy" ratio="16 / 9" caption="The best of you are those who learn the Quran and teach it" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-5)' }}>
             <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: '4px solid var(--navy-500)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
               <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-lg)', background: 'var(--navy-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
                 <Icon name="bookOpen" size={30} color="var(--navy-600)" />
@@ -289,7 +296,7 @@ function AcademicsScreen({ onNav }) {
             <div style={{ width: 72, height: 72, flexShrink: 0, borderRadius: 'var(--radius-lg)', background: 'var(--navy-50)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="languages" size={36} color="var(--navy-600)" />
             </div>
-            <div style={{ flex: 1, minWidth: 280 }}>
+            <div className="ngis-minw-280" style={{ flex: 1, minWidth: 280 }}>
               <EyebrowLabel color="navy">Compulsory Arabic</EyebrowLabel>
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '10px 0 8px', lineHeight: 'var(--leading-tight)' }}>The language of the Quran, for every learner</h2>
               <p style={{ fontSize: 'var(--text-base)', color: 'var(--text-body)', margin: 0, lineHeight: 'var(--leading-normal)', maxWidth: 640 }}>Arabic is taught as a compulsory subject across all grades — connecting our students to their faith and to one of the world&rsquo;s great languages, as part of our Islamic-values foundation.</p>
@@ -306,7 +313,7 @@ function AcademicsScreen({ onNav }) {
             <EyebrowLabel color="red">Reimagined roles</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Everyone in the building is a mentor</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
             {roles.map((r, i) => {
               const accent = i % 2 === 0 ? 'navy' : 'red';
               return (

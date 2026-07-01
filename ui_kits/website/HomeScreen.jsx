@@ -33,31 +33,39 @@ function HomeScreen({ onNav }) {
   return (
     <main>
       {/* ===================== Hero ===================== */}
-      <section style={{ background: NAVY_GRADIENT, position: 'relative', overflow: 'hidden' }}>
+      <section style={{
+        background: NAVY_GRADIENT,
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: 'calc(100vh - 72px)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}>
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.7 }}></div>
         <EduMotifs tone="navy" density="light" />
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.12fr 0.88fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+        <div className="ngis-feature-grid" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-6) var(--space-5)', display: 'grid', gridTemplateColumns: '1.12fr 0.88fr', gap: 'var(--space-6)', alignItems: 'center' }}>
           <div>
             {/* Pakistan-first ribbon */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: 'var(--red-500)', color: '#fff', padding: '8px 16px', borderRadius: 'var(--radius-pill)', fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 'var(--text-sm)', letterSpacing: '0.01em', boxShadow: 'var(--shadow-md)' }}>
               <Icon name="star" size={16} color="var(--gold-500)" />Pakistan&rsquo;s First ETM-Powered School
             </div>
-            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)', color: '#fff', margin: '18px 0 0' }}>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-5xl)', fontWeight: 700, lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)', color: '#fff', margin: '14px 0 0' }}>
               Transforming education<br />for a <span style={{ color: 'var(--gold-500)' }}>better tomorrow.</span>
             </h1>
-            <p style={{ fontSize: 'var(--text-lg)', lineHeight: 'var(--leading-normal)', color: 'rgba(255,255,255,0.82)', maxWidth: 530, margin: '20px 0 28px' }}>
-              A Playgroup&ndash;to&ndash;Grade&nbsp;5 movement combining South Korean academic standards, a STEAM-integrated curriculum and deep-rooted Islamic values. We are not just another school &mdash; we are a movement toward transformational education.
+            <p style={{ fontSize: 'var(--text-base)', lineHeight: 'var(--leading-normal)', color: 'rgba(255,255,255,0.82)', maxWidth: 500, margin: '14px 0 20px' }}>
+              A Playgroup&ndash;to&ndash;Grade&nbsp;5 movement combining South Korean academic standards, a STEAM-integrated curriculum and deep-rooted Islamic values.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Button variant="primary" size="lg" onClick={() => onNav('Admissions')}>Apply for admission</Button>
             </div>
           </div>
-          <PhotoFrame src="../../assets/photos/hero-students.png" alt="NGIS students outside the school" accent="red" ratio="4 / 3" caption="Karachi, Pakistan" />
+          <PhotoFrame src="../../assets/photos/hero-students.png" alt="NGIS students outside the school" accent="red" ratio="16 / 11" caption="Karachi, Pakistan" style={{ maxHeight: '52vh' }} />
         </div>
         {/* Accreditation strip */}
         <div style={{ position: 'relative', borderTop: '1px solid rgba(255,255,255,0.12)', background: 'rgba(0,0,0,0.18)' }}>
-          <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-4) var(--space-5)', display: 'flex', alignItems: 'center', gap: 'var(--space-6)', flexWrap: 'wrap', fontSize: 'var(--text-sm)', color: 'rgba(255,255,255,0.78)' }}>
+          <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-3) var(--space-5)', display: 'flex', alignItems: 'center', gap: 'var(--space-6)', flexWrap: 'wrap', fontSize: 'var(--text-xs)', color: 'rgba(255,255,255,0.78)' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Icon name="shieldCheck" size={17} color="var(--gold-500)" />A project of Robotmea</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Icon name="award" size={17} color="var(--gold-500)" />Accredited by Robotron, South Korea</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Icon name="bookMarked" size={17} color="var(--gold-500)" />Integrated with the Pakistan National Curriculum</span>
@@ -67,7 +75,7 @@ function HomeScreen({ onNav }) {
 
       {/* ===================== Facts band ===================== */}
       <section style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+        <div className="ngis-grid-4" style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
           <Stat value="1st" label="ETM-powered school in Pakistan" color="red" />
           <Stat value="Play–G5" label="Playgroup to Grade 5 · ages 3–11" color="navy" />
           <Stat value="Arabic" label="Compulsory language of the Quran" color="red" />
@@ -78,7 +86,7 @@ function HomeScreen({ onNav }) {
       {/* ===================== Who we are ===================== */}
       <section style={{ background: 'var(--surface-page)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ ...PATTERNS.dotsLight, position: 'absolute', inset: 0, opacity: 0.5 }}></div>
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+        <div className="ngis-feature-grid" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 'var(--space-8)', alignItems: 'center' }}>
           <PhotoFrame src="../../assets/photos/students-classroom.png" alt="NGIS students in class" accent="navy" ratio="5 / 4" caption="Our commitment to your child" />
           <div>
             <EyebrowLabel color="red">Who we are</EyebrowLabel>
@@ -109,7 +117,7 @@ function HomeScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>From transactional to transformational</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>We replaced the tired conventions of traditional schooling with an ecosystem designed to make every child relevant for tomorrow&rsquo;s world.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 'var(--space-4)' }}>
             {differentiators.map(d => (
               <div key={d.no} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.55)', fontSize: 'var(--text-sm)', fontWeight: 600, textDecoration: 'line-through', textDecorationColor: 'var(--red-500)' }}>
@@ -136,7 +144,7 @@ function HomeScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Four pillars, drawn from our crest</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-body)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>Where local values meet global standards &mdash; and emerging technology meets enduring character.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
             {pillars.map(p => (
               <Card key={p.t} accent={p.accent} interactive>
                 <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-md)', background: `var(--${p.accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
@@ -153,7 +161,7 @@ function HomeScreen({ onNav }) {
       {/* ===================== Standards stack ===================== */}
       <section style={{ background: 'var(--surface-page)' }}>
         <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+          <div className="ngis-feature-grid" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-8)', alignItems: 'center' }}>
             <div>
               <EyebrowLabel color="navy">The standards stack</EyebrowLabel>
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Five published standards, non-negotiable in every ETM school</h2>
@@ -224,7 +232,7 @@ function HomeScreen({ onNav }) {
             </div>
             <Button variant="ghost" iconRight={<Icon name="arrowRight" size={17} />} onClick={() => onNav('Gallery')}>View the gallery</Button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
             <PhotoFrame src="../../assets/photos/innovate-lab.png" alt="Innovation lab" accent="red" ratio="4 / 3" />
             <PhotoFrame src="../../assets/photos/foq-quran.png" alt="Friends of Quran" accent="navy" ratio="4 / 3" />
             <PhotoFrame src="../../assets/photos/etm-garage.png" alt="ETM Garage" accent="red" ratio="4 / 3" />

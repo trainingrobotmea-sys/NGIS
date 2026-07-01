@@ -29,7 +29,7 @@ function FacultyScreen({ onNav }) {
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.6 }}></div>
         <EduMotifs tone="navy" density="light" />
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+        <div className="ngis-feature-grid" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'var(--space-8)', alignItems: 'center' }}>
           <div>
             <EyebrowLabel color="gold">A Robotmea Initiative · Accredited by Robotron</EyebrowLabel>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '14px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Faculty Development Cell</h1>
@@ -62,7 +62,7 @@ function FacultyScreen({ onNav }) {
             <EyebrowLabel color="red">What the Cell delivers</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Seven programmes for educator growth</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
             {programmes.map(p => (
               <Card key={p.t} accent={p.accent} interactive>
                 <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-md)', background: `var(--${p.accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
@@ -89,12 +89,12 @@ function FacultyScreen({ onNav }) {
       <section style={{ background: 'var(--surface-page)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ ...PATTERNS.dotsLight, position: 'absolute', inset: 0, opacity: 0.4 }}></div>
         <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 'var(--space-8)', alignItems: 'center' }}>
+          <div className="ngis-feature-grid" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 'var(--space-8)', alignItems: 'center' }}>
             <PhotoFrame src="../../assets/photos/students-classroom.png" alt="NGIS learners" accent="navy" ratio="5 / 4" caption="Trained for global standards" />
             <div>
               <EyebrowLabel color="navy">Recognition that travels</EyebrowLabel>
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 22px', lineHeight: 'var(--leading-tight)' }}>Certified by Robotron. Open to all.</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
+              <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
                 {credentials.map((c, i) => {
                   const accent = i % 2 === 0 ? 'navy' : 'red';
                   return (

@@ -23,14 +23,21 @@ function GalleryScreen({ onNav }) {
   return (
     <main>
       {/* Header */}
-      <section style={{ background: NAVY_GRADIENT, position: 'relative', overflow: 'hidden' }}>
+      <section style={{
+        background: NAVY_GRADIENT,
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: 'calc(100vh - 72px)',
+        display: 'flex',
+        alignItems: 'center',
+      }}>
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.6 }}></div>
         <EduMotifs tone="navy" density="light" />
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)' }}>
+        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', width: '100%' }}>
           <EyebrowLabel color="gold">From our classrooms</EyebrowLabel>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-5xl)', fontWeight: 700, color: '#fff', margin: '14px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Life at NextGen</h1>
-          <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '16px 0 0', maxWidth: 620, lineHeight: 'var(--leading-normal)' }}>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Life at NextGen</h1>
+          <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 640, lineHeight: 'var(--leading-normal)' }}>
             A window into everyday learning — projects, hubs, competitions and the moments that make our school a movement.
           </p>
         </div>
@@ -53,7 +60,7 @@ function GalleryScreen({ onNav }) {
       {/* Masonry grid */}
       <section style={{ background: 'var(--surface-page)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ ...PATTERNS.dotsLight, position: 'absolute', inset: 0, opacity: 0.4 }}></div>
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-6)' }}>
+        <div className="ngis-grid-3" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-6)' }}>
           {cols.map((col, ci) => (
             <div key={ci} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6) ' }}>
               {col.map((it, ii) => (

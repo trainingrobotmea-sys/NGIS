@@ -39,13 +39,20 @@ function AdmissionsScreen() {
   return (
     <main>
       {/* Header */}
-      <section style={{ background: NAVY_GRADIENT, position: 'relative', overflow: 'hidden' }}>
+      <section style={{
+        background: NAVY_GRADIENT,
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: 'calc(100vh - 72px)',
+        display: 'flex',
+        alignItems: 'center',
+      }}>
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.6 }}></div>
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)' }}>
+        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', width: '100%' }}>
           <EyebrowLabel color="gold">Enrollment Guide</EyebrowLabel>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-5xl)', fontWeight: 700, color: '#fff', margin: '14px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Begin your child&rsquo;s journey</h1>
-          <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '16px 0 0', maxWidth: 640, lineHeight: 'var(--leading-normal)' }}>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Begin your child&rsquo;s journey</h1>
+          <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 660, lineHeight: 'var(--leading-normal)' }}>
             We warmly invite you to be part of Pakistan&rsquo;s first ETM-powered school. Here is everything you need to enrol &mdash; InshaAllah.
           </p>
         </div>
@@ -58,7 +65,7 @@ function AdmissionsScreen() {
             <EyebrowLabel color="red">The admission process</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0' }}>Six steps to enrollment</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 'var(--space-4)' }}>
             {steps.map((s, i) => (
               <div key={s.n} style={{ position: 'relative' }}>
                 <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--red-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
@@ -74,12 +81,12 @@ function AdmissionsScreen() {
 
       {/* Uniform + documents */}
       <section style={{ background: 'var(--surface-subtle)' }}>
-        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-7)', alignItems: 'start' }}>
+        <div className="ngis-feature-grid" style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-7)', alignItems: 'start' }}>
           {/* Uniform guideline */}
           <Card accent="navy" padding="var(--space-7)">
             <EyebrowLabel color="navy">Uniform guideline</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '10px 0 20px' }}>What to wear</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }}>
+            <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 14 }}>
                   <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--navy-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>B</span>
@@ -134,7 +141,7 @@ function AdmissionsScreen() {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0', lineHeight: 'var(--leading-tight)' }}>Intelligent safety, connected learning</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-body)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>From the moment students step onto campus to the time they return home, every element is designed to make them feel secure and supported.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+          <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
             {safety.map(s => (
               <Card key={s.t} accent={s.color}>
                 <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-md)', background: `var(--${s.color}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
@@ -150,7 +157,7 @@ function AdmissionsScreen() {
 
       {/* Enquiry form + contact */}
       <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-7)', alignItems: 'start' }}>
+        <div className="ngis-feature-grid" style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-7)', alignItems: 'start' }}>
           {/* Form */}
           <Card padding="var(--space-7)">
             <EyebrowLabel color="navy">Enquiry form</EyebrowLabel>
@@ -161,11 +168,11 @@ function AdmissionsScreen() {
               </Alert>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+                <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                   <Input label="Parent / guardian name" placeholder="Full name" required value={name} onChange={e => setName(e.target.value)} />
                   <Input label="Email address" type="email" placeholder="you@example.com" required />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+                <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                   <Input label="Child\u2019s age" placeholder="e.g. 6" />
                   <Select label="Stage of interest" required options={['Pre-Primary (2–6)', 'Primary', 'Secondary', 'Sixth Form']} />
                 </div>

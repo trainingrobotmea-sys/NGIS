@@ -1,0 +1,93 @@
+/* ==========================================================================
+   NGIS website — responsive layer.
+   The page components render their layout as inline styles (grid-template-
+   columns, fixed hero type scale, etc.), so this sheet targets the className
+   hooks added to those containers and overrides them with !important at
+   each breakpoint. Design tokens (--text-*, --space-*) are also rescaled on
+   :root so every component that reads them shrinks together on small screens.
+   ========================================================================== */
+
+html, body {
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+img, svg {
+  max-width: 100%;
+}
+
+/* ---- Multi-column grids: repeat(N, 1fr) --------------------------------- */
+@media (max-width: 1024px) {
+  .ngis-grid-4, .ngis-grid-5, .ngis-grid-6 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ngis-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 680px) {
+  .ngis-grid-2, .ngis-grid-3, .ngis-grid-4, .ngis-grid-5, .ngis-grid-6 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ngis-grid-2-sm { grid-template-columns: 1fr !important; }
+}
+
+/* Prevents the GAMES/STEAM framework columns (min-width: 280px) and the
+   compulsory-Arabic text column from forcing horizontal scroll on very
+   narrow phones, where 280px no longer fits alongside the section padding. */
+@media (max-width: 400px) {
+  .ngis-minw-280 { min-width: 100% !important; }
+}
+
+/* ---- Asymmetric two-column hero / feature sections ---------------------- */
+@media (max-width: 900px) {
+  .ngis-feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ---- Footer ---------------------------------------------------------------*/
+@media (max-width: 900px) {
+  .ngis-footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .ngis-footer-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ---- Header / mobile nav ------------------------------------------------ */
+@media (max-width: 900px) {
+  :root { --header-height: 64px; }
+  .ngis-nav { display: none !important; }
+  .ngis-header-cta { display: none !important; }
+  .ngis-nav-toggle { display: flex !important; }
+}
+@media (min-width: 901px) {
+  .ngis-nav-mobile { display: none !important; }
+}
+@media (max-width: 420px) {
+  .ngis-header-title { display: none !important; }
+}
+
+/* ---- Type scale: shrink display headings on small screens --------------- */
+@media (max-width: 768px) {
+  :root {
+    --text-6xl: 2.75rem;
+    --text-5xl: 2.25rem;
+    --text-4xl: 1.75rem;
+    --text-3xl: 1.5rem;
+    --space-9: 3rem;
+    --space-8: 2.5rem;
+    --space-7: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --text-6xl: 2.1rem;
+    --text-5xl: 1.85rem;
+    --text-4xl: 1.5rem;
+    --text-3xl: 1.35rem;
+    --space-9: 2.25rem;
+    --space-8: 2rem;
+    --space-7: 1.5rem;
+  }
+}
