@@ -5,6 +5,23 @@ function AdmissionsScreen() {
   const { PATTERNS, NAVY_GRADIENT, SectionDecor } = window.Decor;
   const [submitted, setSubmitted] = React.useState(false);
   const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [stage, setStage] = React.useState('');
+  const [errors, setErrors] = React.useState({});
+
+  const validate = () => {
+    const next = {};
+    if (!name.trim()) next.name = 'Parent / guardian name is required.';
+    if (!email.trim()) next.email = 'Email address is required.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) next.email = 'Enter a valid email address.';
+    if (!stage) next.stage = 'Please select a stage of interest.';
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validate()) setSubmitted(true);
+  };
 
   const steps = [
     { n: '01', t: 'Collect Prospectus & Admission Form', icon: 'fileText' },
@@ -169,15 +186,25 @@ function AdmissionsScreen() {
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                 <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-                  <Input label="Parent / guardian name" placeholder="Full name" required value={name} onChange={e => setName(e.target.value)} />
-                  <Input label="Email address" type="email" placeholder="you@example.com" required />
+                  <Input label="Parent / guardian name" placeholder="Full name" required value={name}
+                    onChange={e => { setName(e.target.value); if (errors.name) setErrors({ ...errors, name: undefined }); }}
+                    error={errors.name} />
+                  <Input label="Email address" type="email" placeholder="you@example.com" required value={email}
+                    onChange={e => { setEmail(e.target.value); if (errors.email) setErrors({ ...errors, email: undefined }); }}
+                    error={errors.email} />
                 </div>
                 <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                   <Input label="Child\u2019s age" placeholder="e.g. 6" />
-                  <Select label="Stage of interest" required options={['Pre-Primary (2–6)', 'Primary', 'Secondary', 'Sixth Form']} />
+                  <div>
+                    <Select label="Stage of interest" required value={stage}
+                      style={errors.stage ? { border: '1px solid var(--danger)' } : undefined}
+                      options={[{ value: '', label: 'Select a stage…' }, 'Pre-Primary (2–6)', 'Primary', 'Secondary', 'Sixth Form']}
+                      onChange={e => { setStage(e.target.value); if (errors.stage) setErrors({ ...errors, stage: undefined }); }} />
+                    {errors.stage && <div style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--danger)' }}>{errors.stage}</div>}
+                  </div>
                 </div>
                 <Input label="Message" placeholder="Tell us a little about your child (optional)" />
-                <Button variant="primary" size="lg" fullWidth onClick={() => setSubmitted(true)}>Submit enquiry</Button>
+                <Button variant="primary" size="lg" fullWidth onClick={handleSubmit}>Submit enquiry</Button>
                 <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', margin: 0, textAlign: 'center' }}>We respect your privacy. Your details are used only to respond to this enquiry.</p>
               </div>
             )}
