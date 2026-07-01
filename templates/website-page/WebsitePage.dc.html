@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Website Page" description="Branded NGIS marketing homepage — sticky header, hero, proof stats, programmes, CTA band and footer, composed from the NGIS component library." -->
+<helmet>
+<script src="./ds-base.js"></script>
+</helmet>
+
+<div style="font-family:var(--font-sans);color:var(--text-body);background:var(--surface-page)">
+
+  <!-- ===================== Header ===================== -->
+  <header style="position:sticky;top:0;z-index:20;background:var(--surface-page);border-bottom:1px solid var(--border)">
+    <div style="max-width:var(--container);margin:0 auto;height:var(--header-height);padding:0 var(--space-5);display:flex;align-items:center;justify-content:space-between;gap:var(--space-5)">
+      <div style="display:flex;align-items:center;gap:var(--space-3)">
+        <span style="display:inline-block;width:8px;height:30px;background:var(--brand);border-radius:2px"></span>
+        <span style="font-family:var(--font-serif);font-weight:var(--weight-bold);font-size:var(--text-xl);color:var(--brand-ink);letter-spacing:var(--tracking-tight)">NextGen International School</span>
+      </div>
+      <nav style="display:flex;align-items:center;gap:var(--space-6)">
+        <a href="#" style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--text-body);text-decoration:none">About</a>
+        <a href="#" style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--text-body);text-decoration:none">Academics</a>
+        <a href="#" style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--text-body);text-decoration:none">Admissions</a>
+        <a href="#" style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--text-body);text-decoration:none">Student Life</a>
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Button" variant="navy" size="sm" hint-size="120px,40px">Apply now</x-import>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== Hero ===================== -->
+  <section style="background:var(--surface-page)">
+    <div style="max-width:var(--container);margin:0 auto;padding:var(--space-9) var(--space-5);display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--space-8);align-items:center">
+      <div>
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.EyebrowLabel" color="{{ accent }}" hint-size="200px,18px">Pakistan's First ETM-Powered School · Karachi</x-import>
+        <h1 style="font-family:var(--font-serif);font-size:var(--text-6xl);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--text-strong);margin:var(--space-3) 0 var(--space-4);text-wrap:balance">Transforming education for a better tomorrow.</h1>
+        <p style="font-size:var(--text-lg);line-height:var(--leading-normal);color:var(--text-body);max-width:32em;margin:0 0 var(--space-6)">A Playgroup–to–Grade 5 movement combining South Korean academic standards, a STEAM-integrated curriculum and deep-rooted Islamic values. We are not just another school — we are a movement.</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+          <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Button" variant="primary" size="lg" hint-size="220px,52px">Apply for admission</x-import>
+          <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Button" variant="secondary" size="lg" hint-size="160px,52px">Book a tour</x-import>
+        </div>
+      </div>
+      <div style="background:var(--navy-50);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-7);display:flex;align-items:center;justify-content:center">
+        <img src="../../assets/ngis-logo-full.jpeg" alt="NextGen International School crest" style="width:100%;max-width:300px;height:auto;display:block" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Proof stats ===================== -->
+  <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+  <section style="background:var(--surface-subtle);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div style="max-width:var(--container);margin:0 auto;padding:var(--space-7) var(--space-5);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-5)">
+      <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Stat" value="1st" label="ETM-powered school in Pakistan" color="{{ accent }}" hint-size="100%,90px"></x-import>
+      <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Stat" value="Play–G5" label="Playgroup to Grade 5 · ages 3–11" color="navy" hint-size="100%,90px"></x-import>
+      <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Stat" value="Arabic" label="Compulsory language of the Quran" color="red" hint-size="100%,90px"></x-import>
+      <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Stat" value="0" label="Homework · rote learning · exam pressure" color="navy" hint-size="100%,90px"></x-import>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ===================== Programmes ===================== -->
+  <section style="background:var(--surface-page)">
+    <div style="max-width:var(--container);margin:0 auto;padding:var(--space-9) var(--space-5)">
+      <div style="text-align:center;margin-bottom:var(--space-7)">
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.EyebrowLabel" color="navy" hint-size="120px,18px">Our school</x-import>
+        <h2 style="font-family:var(--font-serif);font-size:var(--text-4xl);color:var(--text-strong);letter-spacing:var(--tracking-tight);margin:var(--space-2) 0 0">Four pillars, drawn from our crest</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)">
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Card" accent="navy" hint-size="100%,200px">
+          <h3 style="font-family:var(--font-serif);font-size:var(--text-2xl);color:var(--text-strong);margin:0 0 var(--space-2)">South Korean Standards</h3>
+          <p style="font-size:var(--text-base);line-height:var(--leading-normal);color:var(--text-body);margin:0">A globally benchmarked academic system aligned with South Korean excellence and the NCP framework.</p>
+        </x-import>
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Card" accent="red" hint-size="100%,200px">
+          <h3 style="font-family:var(--font-serif);font-size:var(--text-2xl);color:var(--text-strong);margin:0 0 var(--space-2)">Emerging Technologies</h3>
+          <p style="font-size:var(--text-base);line-height:var(--leading-normal);color:var(--text-body);margin:0">Industry 4.0 at the core — coding, robotics and AI woven through every stage of learning.</p>
+        </x-import>
+        <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Card" accent="navy" hint-size="100%,200px">
+          <h3 style="font-family:var(--font-serif);font-size:var(--text-2xl);color:var(--text-strong);margin:0 0 var(--space-2)">Islamic Values & Innovation</h3>
+          <p style="font-size:var(--text-base);line-height:var(--leading-normal);color:var(--text-body);margin:0">Character grounded in faith, paired with the ETM Garage for innovation and entrepreneurship.</p>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA band ===================== -->
+  <section style="background:var(--surface-navy)">
+    <div style="max-width:var(--container);margin:0 auto;padding:var(--space-8) var(--space-5);display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap">
+      <div>
+        <h2 style="font-family:var(--font-serif);font-size:var(--text-4xl);color:var(--white);letter-spacing:var(--tracking-tight);margin:0 0 var(--space-2);max-width:16em">Ready to join the ETM Movement?</h2>
+        <p style="font-size:var(--text-lg);color:var(--navy-100);margin:0">Make your child relevant for tomorrow's world.</p>
+      </div>
+      <x-import component-from-global-scope="NGISDesignSystem_f6dc23.Button" variant="primary" size="lg" hint-size="160px,52px">Book a tour</x-import>
+    </div>
+  </section>
+
+  <!-- ===================== Footer ===================== -->
+  <footer style="background:var(--navy-700);color:var(--navy-100)">
+    <div style="max-width:var(--container);margin:0 auto;padding:var(--space-8) var(--space-5);display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-6)">
+      <div>
+        <img src="../../assets/ngis-logo-full.jpeg" alt="NextGen International School" style="width:110px;height:auto;background:var(--white);border-radius:var(--radius-md);padding:var(--space-2);display:block" />
+        <p style="margin:var(--space-4) 0 0;font-size:var(--text-sm);line-height:var(--leading-normal);max-width:24em;color:var(--navy-100)">Transforming education for a better tomorrow.</p>
+      </div>
+      <div>
+        <div style="font-weight:var(--weight-bold);font-size:var(--text-sm);color:var(--white);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:var(--space-4)">Explore</div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);font-size:var(--text-sm)">
+          <a href="#" style="color:var(--navy-100);text-decoration:none">About us</a>
+          <a href="#" style="color:var(--navy-100);text-decoration:none">Academics</a>
+          <a href="#" style="color:var(--navy-100);text-decoration:none">Student life</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:var(--weight-bold);font-size:var(--text-sm);color:var(--white);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:var(--space-4)">Admissions</div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);font-size:var(--text-sm)">
+          <a href="#" style="color:var(--navy-100);text-decoration:none">How to apply</a>
+          <a href="#" style="color:var(--navy-100);text-decoration:none">Book a tour</a>
+          <a href="#" style="color:var(--navy-100);text-decoration:none">Fees & scholarships</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:var(--weight-bold);font-size:var(--text-sm);color:var(--white);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:var(--space-4)">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);font-size:var(--text-sm)">
+          <span style="color:var(--navy-100)">admissions@ngis.pk</span>
+          <span style="color:var(--navy-100)">Karachi, Pakistan</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12)">
+      <div style="max-width:var(--container);margin:0 auto;padding:var(--space-4) var(--space-5);font-size:var(--text-xs);color:var(--navy-100)">© 2026 NextGen International School. All rights reserved.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 1000 },
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;red&quot;, &quot;navy&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;gold&quot;], &quot;default&quot;: &quot;red&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;showStats&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? 'red',
+      showStats: this.props.showStats ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

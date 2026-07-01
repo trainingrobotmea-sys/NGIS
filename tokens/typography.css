@@ -1,0 +1,43 @@
+/* ==========================================================================
+   NGIS — Typography tokens
+   Spectral (serif) for editorial display & headings — academic gravitas.
+   Mulish (sans) for UI, labels, and body — clean and professional.
+   ========================================================================== */
+:root {
+  /* ---- Families ------------------------------------------------------ */
+  --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Mulish', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-serif);
+  --font-body:    var(--font-sans);
+
+  /* ---- Type scale (1.250 major-third, 16px base) --------------------- */
+  --text-xs:   0.75rem;   /* 12px — captions, eyebrows                    */
+  --text-sm:   0.875rem;  /* 14px — meta, labels                          */
+  --text-base: 1rem;      /* 16px — body                                  */
+  --text-lg:   1.125rem;  /* 18px — lead body                             */
+  --text-xl:   1.25rem;   /* 20px — small headings                        */
+  --text-2xl:  1.5rem;    /* 24px — h4                                     */
+  --text-3xl:  1.875rem;  /* 30px — h3                                     */
+  --text-4xl:  2.5rem;    /* 40px — h2                                     */
+  --text-5xl:  3.25rem;   /* 52px — h1                                     */
+  --text-6xl:  4rem;      /* 64px — hero display                          */
+
+  /* ---- Weights ------------------------------------------------------- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-heavy:    800;  /* Mulish only — for strong UI emphasis        */
+
+  /* ---- Line heights -------------------------------------------------- */
+  --leading-tight:   1.12;  /* display headings                          */
+  --leading-snug:    1.28;  /* sub-headings                              */
+  --leading-normal:  1.6;   /* body copy                                 */
+  --leading-relaxed: 1.75;  /* long-form article body                    */
+
+  /* ---- Letter spacing ------------------------------------------------ */
+  --tracking-tight:  -0.02em;  /* large serif display                    */
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;   /* uppercase eyebrows                     */
+  --tracking-wider:  0.14em;   /* logo-style spaced caps (tagline)       */
+}

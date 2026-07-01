@@ -1,0 +1,7 @@
+/* ==========================================================================
+   NGIS Webfonts
+   Loaded from Google Fonts CDN. See readme.md → "Font substitution" note.
+   - Spectral  : academic editorial serif (display, headings)
+   - Mulish    : clean professional sans (UI, body)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap');

@@ -1,0 +1,99 @@
+/* ==========================================================================
+   NGIS — Color tokens
+   Palette sampled directly from the NextGen International School crest.
+   Red is the primary brand color (ring + wordmark); the four quadrant
+   colors form the secondary academic palette.
+   ========================================================================== */
+:root {
+  /* ---- Brand: NGIS Red (primary) ------------------------------------- */
+  --red-50:  #fdecec;
+  --red-100: #fbd5d6;
+  --red-200: #f6abad;
+  --red-500: #e41e27;   /* core brand red */
+  --red-600: #d11820;
+  --red-700: #b01219;   /* hover / pressed */
+
+  /* ---- Brand: Navy (scholarship quadrant) ---------------------------- */
+  --navy-50:  #eaeef5;
+  --navy-100: #cfdaea;
+  --navy-500: #183763;  /* core navy */
+  --navy-600: #122c50;
+  --navy-700: #0d2240;
+
+  /* ---- Brand: Cerulean (literacy quadrant) --------------------------- */
+  --blue-50:  #e8f4fa;
+  --blue-100: #c5e4f2;
+  --blue-500: #2394be;
+  --blue-600: #1b7a9e;
+  --blue-700: #155f7c;
+
+  /* ---- Brand: Green (growth quadrant) -------------------------------- */
+  --green-50:  #ecf8ec;
+  --green-100: #cdeccd;
+  --green-500: #4ab84b;
+  --green-600: #3a9a3b;
+  --green-700: #2e7a2f;
+
+  /* ---- Brand: Gold (innovation quadrant) ----------------------------- */
+  --gold-50:  #fff7df;
+  --gold-100: #ffecaf;
+  --gold-500: #fdcc0e;
+  --gold-600: #e0b400;
+  --gold-700: #b89400;
+
+  /* ---- Neutrals: cool slate (complements navy) ----------------------- */
+  --ink-900: #0f1a2b;
+  --ink-800: #1c2a3e;
+  --ink-700: #334155;
+  --ink-600: #475569;
+  --ink-500: #64748b;
+  --ink-400: #94a3b8;
+  --ink-300: #cbd5e1;
+  --ink-200: #e2e8f0;
+  --ink-100: #eef2f6;
+  --ink-50:  #f6f8fa;
+  --white:   #ffffff;
+
+  /* ====================================================================
+     Semantic aliases — reference these in components, not raw scales.
+     ==================================================================== */
+  /* Brand roles */
+  --brand:            var(--red-500);   /* primary action / brand accent  */
+  --brand-hover:      var(--red-600);
+  --brand-active:     var(--red-700);
+  --brand-ink:        var(--navy-500);  /* authoritative headings, nav     */
+  --brand-ink-hover:  var(--navy-600);
+
+  /* Text */
+  --text-strong:  var(--ink-900);
+  --text-body:    var(--ink-700);
+  --text-muted:   var(--ink-500);
+  --text-faint:   var(--ink-400);
+  --text-on-brand:    var(--white);
+  --text-on-navy:     var(--white);
+  --text-link:    var(--blue-600);
+
+  /* Surfaces */
+  --surface-page:    var(--white);
+  --surface-subtle:  var(--ink-50);
+  --surface-muted:   var(--ink-100);
+  --surface-card:    var(--white);
+  --surface-navy:    var(--navy-500);
+  --surface-inverse: var(--ink-900);
+
+  /* Borders */
+  --border:          var(--ink-200);
+  --border-strong:   var(--ink-300);
+  --border-brand:    var(--red-500);
+  --focus-ring:      var(--blue-500);
+
+  /* Status — mapped onto the academic palette */
+  --success:     var(--green-600);
+  --success-bg:  var(--green-50);
+  --info:        var(--blue-600);
+  --info-bg:     var(--blue-50);
+  --warning:     var(--gold-600);
+  --warning-bg:  var(--gold-50);
+  --danger:      var(--red-500);
+  --danger-bg:   var(--red-50);
+}

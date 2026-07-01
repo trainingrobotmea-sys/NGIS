@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Status colors" subtitle="Success, info, warning, danger — mapped to the academic palette" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--surface-page); padding: 20px; }
+  .row { display: flex; gap: 10px; }
+  .item { flex: 1; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .dot { width: 22px; height: 22px; border-radius: var(--radius-pill); }
+  .lab { font-size: 12px; font-weight: 700; color: var(--text-strong); }
+  .desc { font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item" style="background:var(--success-bg)"><div class="dot" style="background:var(--success)"></div><div class="lab">Success</div><div class="desc">green-600</div></div>
+    <div class="item" style="background:var(--info-bg)"><div class="dot" style="background:var(--info)"></div><div class="lab">Info</div><div class="desc">blue-600</div></div>
+    <div class="item" style="background:var(--warning-bg)"><div class="dot" style="background:var(--warning)"></div><div class="lab">Warning</div><div class="desc">gold-600</div></div>
+    <div class="item" style="background:var(--danger-bg)"><div class="dot" style="background:var(--danger)"></div><div class="lab">Danger</div><div class="desc">red-500</div></div>
+  </div>
+</body>
+</html>
