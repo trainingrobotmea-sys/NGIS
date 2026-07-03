@@ -75,7 +75,7 @@ addressing prospective families, current parents, and students.
 - **Vocabulary.** Academic and inclusive: *learners, faculty, curriculum,
   enquiry, holistic, character, scholarship, community, pathways, well-being.*
   Prefer British-international spelling conventions where natural
-  (*enrolment, programme, enquiry*) *(inferred — confirm regional standard).*
+  (*Enrollment, programme, enquiry*) *(inferred — confirm regional standard).*
 - **Emoji.** Never. Not in product, marketing, or social.
 - **Numbers & dates.** Spell out one–nine in prose; use figures for stats and
   ages ("Years 7–13", "ages 3–18"). Write dates as *14 September 2026*.

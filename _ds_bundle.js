@@ -1866,7 +1866,7 @@ function AcademicsScreen({
       color: 'rgba(255,255,255,0.82)',
       margin: '12px 0 0'
     }
-  }, "Enrol your child in Pakistan\u2019s first ETM-powered school.")), /*#__PURE__*/React.createElement(Button, {
+  }, "Enroll your child in Pakistan\u2019s first ETM-powered school.")), /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "lg",
     iconRight: /*#__PURE__*/React.createElement(Icon, {
@@ -1884,7 +1884,7 @@ window.AcademicsScreen = AcademicsScreen;
 
 // ui_kits/website/AdmissionsScreen.jsx
 try { (() => {
-// NGIS website — Admissions / "Enrollment Guide" (from the NGIS Prospectus + Uniform guide)
+// NGIS website — Admissions / "Enrolllment Guide" (from the NGIS Prospectus + Uniform guide)
 function AdmissionsScreen() {
   const {
     Card,
@@ -1925,7 +1925,7 @@ function AdmissionsScreen() {
     icon: 'heartPulse'
   }, {
     n: '06',
-    t: 'Enrollment & Fee Submission',
+    t: 'Enrolllment & Fee Submission',
     icon: 'shieldCheck'
   }];
 
@@ -1978,7 +1978,7 @@ function AdmissionsScreen() {
     }
   }, /*#__PURE__*/React.createElement(EyebrowLabel, {
     color: "gold"
-  }, "Enrollment Guide"), /*#__PURE__*/React.createElement("h1", {
+  }, "Enrolllment Guide"), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: 'var(--font-serif)',
       fontSize: 'var(--text-5xl)',
@@ -1996,7 +1996,7 @@ function AdmissionsScreen() {
       maxWidth: 640,
       lineHeight: 'var(--leading-normal)'
     }
-  }, "We warmly invite you to be part of Pakistan\u2019s first ETM-powered school. Here is everything you need to enrol \u2014 InshaAllah."))), /*#__PURE__*/React.createElement("section", {
+  }, "We warmly invite you to be part of Pakistan\u2019s first ETM-powered school. Here is everything you need to Enroll \u2014 InshaAllah."))), /*#__PURE__*/React.createElement("section", {
     style: {
       background: 'var(--surface-page)'
     }
@@ -2021,7 +2021,7 @@ function AdmissionsScreen() {
       color: 'var(--text-strong)',
       margin: '12px 0 0'
     }
-  }, "Six steps to enrollment")), /*#__PURE__*/React.createElement("div", {
+  }, "Six steps to Enrolllment")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(6, 1fr)',
@@ -2503,7 +2503,7 @@ function AdmissionsScreen() {
       lineHeight: 'var(--leading-normal)',
       margin: 0
     }
-  }, "A project of Robotmea, accredited by Robotron, South Korea. Built on South Korean educational standards and grounded in Islamic values."))))));
+  }, "An Initiative of Robotmea, accredited by Robotron, South Korea. Built on South Korean educational standards and grounded in Islamic values."))))));
 }
 window.AdmissionsScreen = AdmissionsScreen;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/AdmissionsScreen.jsx", error: String((e && e.message) || e) }); }
@@ -3220,7 +3220,7 @@ function FacultyScreen({
     d: 'The Cell is open to educators beyond NGIS — a resource for the wider teaching community.'
   }, {
     icon: 'shieldCheck',
-    t: 'A Robotmea Initiative',
+    t: 'An Initiative of Robotmea',
     d: 'An initiative of Robotmea, accredited by Robotron — the same authority behind ETM.'
   }];
   return /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("section", {
@@ -3254,7 +3254,7 @@ function FacultyScreen({
     }
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(EyebrowLabel, {
     color: "gold"
-  }, "A Robotmea Initiative \xB7 Accredited by Robotron"), /*#__PURE__*/React.createElement("h1", {
+  }, "An Initiative of Robotmea \xB7 Accredited by Robotron"), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: 'var(--font-serif)',
       fontSize: 'var(--text-6xl)',
@@ -3811,7 +3811,7 @@ function Footer({
       fontSize: 'var(--text-xs)',
       color: 'rgba(255,255,255,0.6)'
     }
-  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 NextGen International School. A project of Robotmea \xB7 Accredited by Robotron, South Korea."), /*#__PURE__*/React.createElement("span", null, "Privacy Policy \xB7 Terms \xB7 Safeguarding"))));
+  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 NextGen International School. An Initiative of Robotmea \xB7 Accredited by Robotron, South Korea."), /*#__PURE__*/React.createElement("span", null, "Privacy Policy \xB7 Terms \xB7 Safeguarding"))));
 }
 window.Footer = Footer;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/Footer.jsx", error: String((e && e.message) || e) }); }
@@ -4388,7 +4388,7 @@ function HomeScreen({
     name: "shieldCheck",
     size: 17,
     color: "var(--gold-500)"
-  }), "A project of Robotmea"), /*#__PURE__*/React.createElement("span", {
+  }), "An Initiative of Robotmea"), /*#__PURE__*/React.createElement("span", {
     style: {
       display: 'flex',
       alignItems: 'center',

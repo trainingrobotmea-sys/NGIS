@@ -9,7 +9,7 @@ function FacultyScreen({ onNav }) {
     { t: 'Teacher Training & PD', d: 'Structured professional development that brings an entire faculty up to a modern teaching standard.', icon: 'graduationCap', accent: 'red' },
     { t: 'Educational Leadership', d: 'Leadership programmes for principals and heads of department driving whole-school change.', icon: 'users', accent: 'navy' },
     { t: 'AI, Robotics & STEAM', d: 'Deep capability-building in AI, robotics, STEAM education and emerging technologies.', icon: 'brain', accent: 'red' },
-    { t: 'Curriculum & Assessment', d: 'Innovation in curriculum design and assessment — moving beyond rote learning toward evidence of real understanding.', icon: 'bookMarked', accent: 'navy' },
+    { t: 'Curriculum & Assessment', d: 'Innovation in curriculum design and assessment, moving beyond rote learning toward evidence of real understanding.', icon: 'bookMarked', accent: 'navy' },
     { t: 'International Certification', d: 'Internationally recognised certifications and recognition for participating educators.', icon: 'award', accent: 'red' },
     { t: 'Continuous PD (CPD)', d: 'Ongoing CPD cycles that keep the standard alive long after the initial training ends.', icon: 'refresh', accent: 'navy' },
     { t: 'International L&D', d: 'Access to international learning-and-development programmes, courses and exchange opportunities.', icon: 'globe', accent: 'red' },
@@ -18,8 +18,8 @@ function FacultyScreen({ onNav }) {
   const credentials = [
     { icon: 'award', t: 'Robotron Certification', d: 'Educators who complete the programme earn certificates issued by Robotron, South Korea.' },
     { icon: 'globe', t: 'International Standards', d: 'Training is benchmarked to global teaching standards, not local minimums.' },
-    { icon: 'users', t: 'Open to Outsiders', d: 'The Cell is open to educators beyond NGIS — a resource for the wider teaching community.' },
-    { icon: 'shieldCheck', t: 'A Robotmea Initiative', d: 'An initiative of Robotmea, accredited by Robotron — the same authority behind ETM.' },
+    { icon: 'users', t: 'Open to Outsiders', d: 'The Cell is open to educators beyond NGIS, a resource for the wider teaching community.' },
+    { icon: 'shieldCheck', t: 'An Initiative of Robotmea', d: 'An initiative of Robotmea, accredited by Robotron, the same authority behind ETM.' },
   ];
 
   return (
@@ -31,11 +31,11 @@ function FacultyScreen({ onNav }) {
         <SectionDecor tone="navy" />
         <div className="ngis-feature-grid" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'var(--space-8)', alignItems: 'center' }}>
           <div>
-            <EyebrowLabel color="gold">A Robotmea Initiative · Accredited by Robotron</EyebrowLabel>
+            <EyebrowLabel color="gold">An Initiative of Robotmea · Accredited by Robotron</EyebrowLabel>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '14px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Faculty Development Cell</h1>
             <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'var(--text-2xl)', color: 'var(--gold-500)', margin: '12px 0 0' }}>Teachers first. Always.</p>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '18px 0 0', maxWidth: 540, lineHeight: 'var(--leading-normal)' }}>
-              The single most reliable predictor of a programme&rsquo;s outcome is the teacher standing next to the technology. The Cell empowers educators and school leaders with 21st-century teaching skills — from emerging-technology pedagogy to international certification and continuous professional development.
+              The single most reliable predictor of a programme&rsquo;s outcome is the teacher standing next to the technology. The Cell empowers educators and school leaders with 21st-century teaching skills, from emerging-technology pedagogy to international certification and continuous professional development.
             </p>
           </div>
           <PhotoFrame src="../../assets/photos/faculty-development.png" alt="Faculty Development session at NGIS" accent="red" ratio="4 / 3" caption="Empowering educators" />
@@ -47,7 +47,7 @@ function FacultyScreen({ onNav }) {
         <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)' }}>
           <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', textAlign: 'center' }}>
             <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 500, color: 'var(--text-strong)', lineHeight: 'var(--leading-snug)', margin: 0, maxWidth: 900, textWrap: 'balance' }}>
-              Technology changes a classroom only as much as the teacher beside it. So we invest in teachers first — <span style={{ color: 'var(--red-600)' }}>better teachers, stronger learners, a brighter tomorrow.</span>
+              Technology changes a classroom only as much as the teacher beside it. So we invest in teachers first: <span style={{ color: 'var(--red-600)' }}>better teachers, stronger learners, a brighter tomorrow.</span>
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ function FacultyScreen({ onNav }) {
         <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-6)', flexWrap: 'wrap' }}>
           <div>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 'var(--leading-tight)' }}>Grow with the Faculty Development Cell</h2>
-            <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '12px 0 0' }}>For NGIS faculty and educators everywhere — earn Robotron-certified credentials.</p>
+            <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '12px 0 0' }}>For NGIS faculty and educators everywhere. Earn Robotron-certified credentials.</p>
           </div>
           <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions')} style={{ flexShrink: 0 }}>Get in touch</Button>
         </div>

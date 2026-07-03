@@ -16,10 +16,11 @@ function Header({ active, onNav }) {
       }}>
         <a onClick={() => go('Home')} style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', textDecoration: 'none' }}>
           <img src="../../assets/ngis-logo-crest.png" alt="NGIS"
-            style={{ width: 44, height: 44, objectFit: 'contain' }} />
-          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }} className="ngis-header-title">
-            <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 17, color: '#fff', letterSpacing: '0.01em', whiteSpace: 'nowrap' }}>NextGen International</span>
-            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 10.5, color: 'var(--gold-500)', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase' }}>School</span>
+            style={{ width: 44, height: 44, objectFit: 'contain', flexShrink: 0 }} />
+          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1, gap: 1 }} className="ngis-header-title">
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 17, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>NextGen</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 17, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>International School</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 9, color: '#fff', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: 2 }}>Transforming education for better tomorrow</span>
           </span>
         </a>
         <nav style={{ display: 'flex', gap: 4, marginLeft: 'auto' }} className="ngis-nav">
@@ -31,8 +32,8 @@ function Header({ active, onNav }) {
               background: active === l ? 'rgba(255,255,255,0.12)' : 'transparent',
               transition: 'background var(--dur-fast), color var(--dur-fast)',
             }}
-            onMouseEnter={e => { if (active !== l) e.currentTarget.style.color = '#fff'; }}
-            onMouseLeave={e => { if (active !== l) e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; }}
+              onMouseEnter={e => { if (active !== l) e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { if (active !== l) e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; }}
             >{l}</a>
           ))}
         </nav>

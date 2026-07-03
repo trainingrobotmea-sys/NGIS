@@ -6,7 +6,7 @@ function Campuses({ heading = true }) {
   const campuses = [
     {
       name: 'Malir Campus',
-      area: 'Malir Cantt, Karachi',
+      area: 'Malir, Karachi',
       accent: 'navy',
       photo: '../../assets/photos/campus-building.jpeg',
       instagram: { handle: '@ngis_malir', url: 'https://www.instagram.com/ngis_malir' },

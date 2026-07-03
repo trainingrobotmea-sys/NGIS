@@ -7,8 +7,14 @@
    :root so every component that reads them shrinks together on small screens.
    ========================================================================== */
 
-html, body {
+/* overflow-x is set on html only (not body) — setting it on both pairs
+   overflow-y to "auto" on each per the CSS overflow spec, which turns body
+   into its own (non-scrolling) box and breaks any position:sticky
+   descendant, since it stops tracking the real page scroll on html. */
+html {
   overflow-x: hidden;
+}
+body {
   min-width: 320px;
 }
 
@@ -90,4 +96,39 @@ img, svg {
     --space-8: 2rem;
     --space-7: 1.5rem;
   }
+}
+
+/* ---- Hero typewriter cursor ---------------------------------------------- */
+.ngis-cursor {
+  animation: ngisBlink 1s step-end infinite;
+}
+@keyframes ngisBlink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ngis-cursor { animation: none; }
+}
+
+/* ---- Visually-hidden text (screen readers only) --------------------------- */
+.ngis-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Fact cards: hover lift ------------------------------------------------ */
+.ngis-fact-card {
+  transition: transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
+}
+.ngis-fact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ngis-fact-card { transition: none; }
+  .ngis-fact-card:hover { transform: none; }
 }

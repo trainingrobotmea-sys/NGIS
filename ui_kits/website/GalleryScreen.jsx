@@ -38,7 +38,7 @@ function GalleryScreen({ onNav }) {
           <EyebrowLabel color="gold">From our classrooms</EyebrowLabel>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Life at NextGen</h1>
           <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 640, lineHeight: 'var(--leading-normal)' }}>
-            A window into everyday learning — projects, hubs, competitions and the moments that make our school a movement.
+            A window into everyday learning: projects, hubs, competitions and the moments that make our school a movement.
           </p>
         </div>
       </section>

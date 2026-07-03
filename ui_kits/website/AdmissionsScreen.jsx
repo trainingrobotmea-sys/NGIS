@@ -48,8 +48,8 @@ function AdmissionsScreen() {
 
   const safety = [
     { icon: 'smartphone', color: 'navy', t: 'Digital Attendance System', d: 'Seamless attendance tracking that keeps parents instantly informed and connected.' },
-    { icon: 'heartPulse', color: 'red', t: 'Health Card', d: 'Healthy students lead to excellent minds — we safeguard the wellbeing of every child.' },
-    { icon: 'phone', color: 'navy', t: 'Parent Mobile Application', d: 'Stay updated with academics, notices and progress — anytime, anywhere.' },
+    { icon: 'heartPulse', color: 'red', t: 'Health Card', d: 'Healthy students lead to excellent minds. We safeguard the wellbeing of every child.' },
+    { icon: 'phone', color: 'navy', t: 'Parent Mobile Application', d: 'Stay updated with academics, notices and progress, anytime, anywhere.' },
     { icon: 'shieldCheck', color: 'red', t: 'Security & Safety', d: 'A secure, well-monitored environment where children learn with confidence.' },
   ];
 
@@ -70,7 +70,7 @@ function AdmissionsScreen() {
           <EyebrowLabel color="gold">Enrollment Guide</EyebrowLabel>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Begin your child&rsquo;s journey</h1>
           <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 660, lineHeight: 'var(--leading-normal)' }}>
-            We warmly invite you to be part of Pakistan&rsquo;s first ETM-powered school. Here is everything you need to enrol &mdash; InshaAllah.
+            We warmly invite you to be part of Pakistan&rsquo;s first ETM-powered school. Here is everything you need to enroll, InshaAllah.
           </p>
         </div>
       </section>
@@ -82,14 +82,14 @@ function AdmissionsScreen() {
             <EyebrowLabel color="red">The admission process</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 0' }}>Six steps to enrollment</h2>
           </div>
-          <div className="ngis-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 'var(--space-4)' }}>
+          <div className="ngis-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 'var(--space-4)', alignItems: 'start' }}>
             {steps.map((s, i) => (
-              <div key={s.n} style={{ position: 'relative' }}>
+              <div key={s.n} style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--red-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
                   <Icon name={s.icon} size={24} color="var(--red-600)" />
                 </div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--red-500)', lineHeight: 1, marginBottom: 6 }}>{s.n}</div>
-                <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, lineHeight: 'var(--leading-snug)' }}>{s.t}</h3>
+                <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, lineHeight: 'var(--leading-snug)', minHeight: '2.6em' }}>{s.t}</h3>
               </div>
             ))}
           </div>
@@ -103,33 +103,28 @@ function AdmissionsScreen() {
           <Card accent="navy" padding="var(--space-7)">
             <EyebrowLabel color="navy">Uniform guideline</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '10px 0 20px' }}>What to wear</h2>
-            <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }}>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 14 }}>
-                  <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--navy-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>B</span>
-                  <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Boys</h3>
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 11 }}>
-                  {uniformBoys.map(u => (
-                    <li key={u} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
-                      <Icon name="check" size={16} color="var(--navy-600)" style={{ marginTop: 2, flexShrink: 0 }} />{u}
-                    </li>
-                  ))}
-                </ul>
+            {/* A single grid (not two independent lists) so each boy/girl item
+                pair shares a real grid row — row heights auto-match even when
+                one side's text wraps to two lines and the other doesn't. */}
+            <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 'var(--space-5)', rowGap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 2 }}>
+                <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--navy-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>B</span>
+                <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Boys</h3>
               </div>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 14 }}>
-                  <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--red-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>G</span>
-                  <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Girls</h3>
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 11 }}>
-                  {uniformGirls.map(u => (
-                    <li key={u} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
-                      <Icon name="check" size={16} color="var(--red-600)" style={{ marginTop: 2, flexShrink: 0 }} />{u}
-                    </li>
-                  ))}
-                </ul>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 2 }}>
+                <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--red-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>G</span>
+                <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Girls</h3>
               </div>
+              {uniformBoys.map((u, i) => (
+                <React.Fragment key={i}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
+                    <Icon name="check" size={16} color="var(--navy-600)" style={{ marginTop: 2, flexShrink: 0 }} />{u}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
+                    <Icon name="check" size={16} color="var(--red-600)" style={{ marginTop: 2, flexShrink: 0 }} />{uniformGirls[i]}
+                  </div>
+                </React.Fragment>
+              ))}
             </div>
             <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', margin: '18px 0 0', lineHeight: 'var(--leading-normal)' }}>The school crest badge is worn on the shirt pocket. Uniforms are available through the school&rsquo;s approved supplier.</p>
           </Card>
@@ -194,7 +189,7 @@ function AdmissionsScreen() {
                     error={errors.email} />
                 </div>
                 <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-                  <Input label="Child\u2019s age" placeholder="e.g. 6" />
+                  <Input label="Child&rsquo;s age" placeholder="e.g. 6" />
                   <div>
                     <Select label="Stage of interest" required value={stage}
                       style={errors.stage ? { border: '1px solid var(--danger)' } : undefined}
@@ -226,7 +221,7 @@ function AdmissionsScreen() {
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 600, color: 'var(--text-strong)', margin: 0 }}>Accreditation</h3>
               </div>
               <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)', margin: 0 }}>
-                A project of Robotmea, accredited by Robotron, South Korea. Built on South Korean educational standards and grounded in Islamic values.
+                An Initiative of Robotmea, accredited by Robotron, South Korea. Built on South Korean educational standards and grounded in Islamic values.
               </p>
             </Card>
           </div>
