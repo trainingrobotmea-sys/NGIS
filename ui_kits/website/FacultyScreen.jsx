@@ -3,16 +3,17 @@
 function FacultyScreen({ onNav }) {
   const { Card, EyebrowLabel, Button, Badge } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
-  const { PATTERNS, NAVY_GRADIENT, SectionDecor, PhotoFrame, EduMotifs } = window.Decor;
+  const { PATTERNS, NAVY_GRADIENT, SectionDecor, PhotoFrame, EduMotifs, CTABand } = window.Decor;
+  const crestAccents = ['green', 'navy', 'blue', 'gold'];
 
   const programmes = [
-    { t: 'Teacher Training & PD', d: 'Structured professional development that brings an entire faculty up to a modern teaching standard.', icon: 'graduationCap', accent: 'red' },
+    { t: 'Teacher Training & PD', d: 'Structured professional development that brings an entire faculty up to a modern teaching standard.', icon: 'graduationCap', accent: 'green' },
     { t: 'Educational Leadership', d: 'Leadership programmes for principals and heads of department driving whole-school change.', icon: 'users', accent: 'navy' },
-    { t: 'AI, Robotics & STEAM', d: 'Deep capability-building in AI, robotics, STEAM education and emerging technologies.', icon: 'brain', accent: 'red' },
-    { t: 'Curriculum & Assessment', d: 'Innovation in curriculum design and assessment, moving beyond rote learning toward evidence of real understanding.', icon: 'bookMarked', accent: 'navy' },
-    { t: 'International Certification', d: 'Internationally recognised certifications and recognition for participating educators.', icon: 'award', accent: 'red' },
+    { t: 'AI, Robotics & STEAM', d: 'Deep capability-building in AI, robotics, STEAM education and emerging technologies.', icon: 'brain', accent: 'blue' },
+    { t: 'Curriculum & Assessment', d: 'Innovation in curriculum design and assessment, moving beyond rote learning toward evidence of real understanding.', icon: 'bookMarked', accent: 'gold' },
+    { t: 'International Certification', d: 'Internationally recognised certifications and recognition for participating educators.', icon: 'award', accent: 'green' },
     { t: 'Continuous PD (CPD)', d: 'Ongoing CPD cycles that keep the standard alive long after the initial training ends.', icon: 'refresh', accent: 'navy' },
-    { t: 'International L&D', d: 'Access to international learning-and-development programmes, courses and exchange opportunities.', icon: 'globe', accent: 'red' },
+    { t: 'International L&D', d: 'Access to international learning-and-development programmes, courses and exchange opportunities.', icon: 'globe', accent: 'blue' },
   ];
 
   const credentials = [
@@ -37,6 +38,10 @@ function FacultyScreen({ onNav }) {
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '18px 0 0', maxWidth: 540, lineHeight: 'var(--leading-normal)' }}>
               The single most reliable predictor of a programme&rsquo;s outcome is the teacher standing next to the technology. The Cell empowers educators and school leaders with 21st-century teaching skills, from emerging-technology pedagogy to international certification and continuous professional development.
             </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24 }}>
+              <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions', 'enquiry-form')}>Enquire about training</Button>
+              <Button variant="secondary" size="lg" onClick={() => onNav('Contact')}>Contact us</Button>
+            </div>
           </div>
           <PhotoFrame src="../../assets/photos/faculty-development.png" alt="Faculty Development session at NGIS" accent="red" ratio="4 / 3" caption="Empowering educators" />
         </div>
@@ -50,6 +55,20 @@ function FacultyScreen({ onNav }) {
               Technology changes a classroom only as much as the teacher beside it. So we invest in teachers first: <span style={{ color: 'var(--red-600)' }}>better teachers, stronger learners, a brighter tomorrow.</span>
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ===================== Mid-page CTA ===================== */}
+      <section style={{ background: 'var(--surface-page)' }}>
+        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)' }}>
+          <CTABand
+            accent="blue"
+            eyebrow="Open to every school"
+            title="Bring Robotron-certified training to your teachers"
+            subtitle="The Cell welcomes educators from NGIS and beyond."
+            buttonLabel="Enquire"
+            onClick={() => onNav('Admissions', 'enquiry-form')}
+          />
         </div>
       </section>
 
@@ -78,7 +97,7 @@ function FacultyScreen({ onNav }) {
               <div style={{ position: 'relative' }}>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: '#fff', margin: '0 0 10px', lineHeight: 'var(--leading-snug)' }}>Train with us</h3>
                 <p style={{ fontSize: 'var(--text-sm)', color: 'rgba(255,255,255,0.78)', margin: '0 0 16px', lineHeight: 'var(--leading-normal)' }}>Open to educators from every school.</p>
-                <Button variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => onNav('Admissions')}>Enquire</Button>
+                <Button variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => onNav('Admissions', 'enquiry-form')}>Enquire</Button>
               </div>
             </div>
           </div>
@@ -96,7 +115,7 @@ function FacultyScreen({ onNav }) {
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '12px 0 22px', lineHeight: 'var(--leading-tight)' }}>Certified by Robotron. Open to all.</h2>
               <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
                 {credentials.map((c, i) => {
-                  const accent = i % 2 === 0 ? 'navy' : 'red';
+                  const accent = crestAccents[i % 4];
                   return (
                     <div key={c.t} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                       <div style={{ width: 46, height: 46, flexShrink: 0, borderRadius: 'var(--radius-md)', background: `var(--${accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -124,7 +143,7 @@ function FacultyScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 'var(--leading-tight)' }}>Grow with the Faculty Development Cell</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '12px 0 0' }}>For NGIS faculty and educators everywhere. Earn Robotron-certified credentials.</p>
           </div>
-          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions')} style={{ flexShrink: 0 }}>Get in touch</Button>
+          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions', 'enquiry-form')} style={{ flexShrink: 0 }}>Get in touch</Button>
         </div>
       </section>
     </main>

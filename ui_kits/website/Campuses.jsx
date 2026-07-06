@@ -15,7 +15,7 @@ function Campuses({ heading = true }) {
     {
       name: 'Jinnah Avenue Campus',
       area: 'Jinnah Avenue, Karachi',
-      accent: 'red',
+      accent: 'gold',
       photo: '../../assets/photos/campus-jinnah-avenue.png',
       instagram: { handle: '@ngis_jinnahavenue_official', url: 'https://www.instagram.com/ngis_jinnahavenue_official' },
       facebook: { handle: 'NGIS Jinnah Avenue', url: 'https://www.facebook.com/profile.php?id=61575391815391' },
@@ -77,7 +77,7 @@ function Campuses({ heading = true }) {
               </div>
               {/* body */}
               <div style={{ padding: 'var(--space-6)' }}>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-2xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 4px' }}>{c.name}</h3>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 4px' }}>{c.name}</h3>
                 <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: '0 0 18px' }}>NextGen International School · Karachi</p>
                 <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
                   <Social kind="instagram" handle={c.instagram.handle} url={c.instagram.url} />

@@ -27,14 +27,40 @@
 <script type="text/babel" src="FacultyScreen.jsx"></script>
 <script type="text/babel" src="AdmissionsScreen.jsx"></script>
 <script type="text/babel" src="GalleryScreen.jsx"></script>
+<script type="text/babel" src="WhyNgisScreen.jsx"></script>
+<script type="text/babel" src="ContactScreen.jsx"></script>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel" data-presets="react">
   function App() {
     const [route, setRoute] = React.useState('Home');
-    const go = (r) => { setRoute(r); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-    const { Header, Footer, HomeScreen, AcademicsScreen, AdmissionsScreen, GalleryScreen, FacultyScreen } = window;
+    const pendingAnchor = React.useRef(null);
+
+    const scrollToTarget = (anchor) => {
+      requestAnimationFrame(() => {
+        const el = anchor && document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        else window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    };
+
+    const go = (r, anchor) => {
+      // setRoute is a no-op when r === the current route, so the effect below
+      // never re-fires — scroll immediately instead of queuing it.
+      if (r === route) { scrollToTarget(anchor); return; }
+      pendingAnchor.current = anchor || null;
+      setRoute(r);
+    };
+
+    React.useEffect(() => {
+      const anchor = pendingAnchor.current;
+      pendingAnchor.current = null;
+      // Wait a tick for the new screen to mount before locating the target.
+      scrollToTarget(anchor);
+    }, [route]);
+
+    const { Header, Footer, HomeScreen, AcademicsScreen, AdmissionsScreen, GalleryScreen, FacultyScreen, WhyNgisScreen, ContactScreen } = window;
     return (
       <React.Fragment>
         <Header active={route} onNav={go} />
@@ -42,6 +68,8 @@
           : route === 'Faculty' ? <FacultyScreen onNav={go} />
           : route === 'Admissions' ? <AdmissionsScreen onNav={go} />
           : route === 'Gallery' ? <GalleryScreen onNav={go} />
+          : route === 'WhyNgis' ? <WhyNgisScreen onNav={go} />
+          : route === 'Contact' ? <ContactScreen onNav={go} />
           : <HomeScreen onNav={go} />}
         <Footer onNav={go} />
       </React.Fragment>

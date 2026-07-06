@@ -13,7 +13,7 @@ export function Stat({ value, label, color = 'red', align = 'center', style, ...
     <div style={{ textAlign: align, fontFamily: 'var(--font-sans)', ...style }} {...rest}>
       <div style={{
         fontFamily: 'var(--font-serif)',
-        fontSize: 'var(--text-5xl)',
+        fontSize: 'var(--text-3xl)',
         fontWeight: 'var(--weight-bold)',
         lineHeight: 1,
         letterSpacing: 'var(--tracking-tight)',

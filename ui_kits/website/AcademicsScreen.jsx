@@ -4,7 +4,8 @@
 function AcademicsScreen({ onNav }) {
   const { Card, Badge, EyebrowLabel, Button } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
-  const { PATTERNS, NAVY_GRADIENT, SectionDecor, PhotoFrame, EduMotifs, ClassNameStack } = window.Decor;
+  const { PATTERNS, NAVY_GRADIENT, SectionDecor, PhotoFrame, EduMotifs, ClassNameStack, CTABand } = window.Decor;
+  const crestAccents = ['green', 'navy', 'blue', 'gold'];
 
   // Grade structure — Playgroup to Grade 5 (the school's full range).
   const grades = [
@@ -97,7 +98,7 @@ function AcademicsScreen({ onNav }) {
         background: NAVY_GRADIENT,
         position: 'relative',
         overflow: 'hidden',
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: 'calc(100vh - var(--header-height))',
         display: 'flex',
         alignItems: 'center',
       }}>
@@ -105,12 +106,16 @@ function AcademicsScreen({ onNav }) {
         <EduMotifs tone="navy" density="light" />
         <SectionDecor tone="navy" />
         <div className="ngis-feature-grid" style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'var(--space-8)', alignItems: 'center' }}>
-          <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', width: '100%' }}>
+          <div>
             <EyebrowLabel color="gold">Educational Transformation Movement</EyebrowLabel>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Our learning ecosystem</h1>
             <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 700, lineHeight: 'var(--leading-normal)' }}>
               An enabling ecosystem to make every child relevant, integrating emerging technologies, a STEAM curriculum and Islamic values, benchmarked to South Korean standards and aligned with the Pakistan National Curriculum.
             </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24 }}>
+              <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions', 'enquiry-form')}>Begin admission</Button>
+              <Button variant="secondary" size="lg" onClick={() => onNav('Contact')}>Talk to admissions</Button>
+            </div>
           </div>
           <PhotoFrame src="../../assets/photos/academics.png" alt="Academics session at NGIS" accent="red" ratio="4 / 3" caption="Fostering excellence" />
         </div>
@@ -127,7 +132,7 @@ function AcademicsScreen({ onNav }) {
           </div>
           <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}>
             {grades.map((g, i) => {
-              const accent = i % 2 === 0 ? 'navy' : 'red';
+              const accent = crestAccents[i % 4];
               return (
                 <div key={g.stage} style={{ display: 'flex', gap: 18, alignItems: 'flex-start', background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: `3px solid var(--${accent}-500)`, borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', boxShadow: 'var(--shadow-sm)' }}>
                   <div style={{ flexShrink: 0, textAlign: 'center' }}>
@@ -158,7 +163,7 @@ function AcademicsScreen({ onNav }) {
             <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-body)', margin: '14px 0 0', lineHeight: 'var(--leading-normal)' }}>Foundations are laid through G.A.M.E.S in the early years, then deepened into the S.T.E.A.M disciplines as learners move into primary.</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'stretch', justifyContent: 'center', gap: 'var(--space-5)', flexWrap: 'wrap' }}>
-            <FrameworkColumn stageLabel="Pre-Primary" ages="Playgroup–FS2 · Ages 3–6" name="G.A.M.E.S" items={games} accent="navy" icon="star" />
+            <FrameworkColumn stageLabel="Pre-Primary" ages="Playgroup–FS2 · Ages 3–6" name="G.A.M.E.S" items={games} accent="green" icon="star" />
             {/* arrow */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 56 }}>
               <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'var(--gold-500)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow-md)' }}>
@@ -166,8 +171,22 @@ function AcademicsScreen({ onNav }) {
               </div>
               <span style={{ marginTop: 10, fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)', color: 'var(--text-muted)', textAlign: 'center', maxWidth: 80 }}>Progression</span>
             </div>
-            <FrameworkColumn stageLabel="Primary" ages="Grade 1–5 · Ages 6–11" name="S.T.E.A.M" items={steam} accent="red" icon="rocket" />
+            <FrameworkColumn stageLabel="Primary" ages="Grade 1–5 · Ages 6–11" name="S.T.E.A.M" items={steam} accent="gold" icon="rocket" />
           </div>
+        </div>
+      </section>
+
+      {/* ===================== Mid-page CTA ===================== */}
+      <section style={{ background: 'var(--surface-page)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)' }}>
+          <CTABand
+            accent="gold"
+            eyebrow="See it in person"
+            title="Want to see the One-Book model in action?"
+            subtitle="Book a campus tour and watch a Discovery Hub lesson first-hand."
+            buttonLabel="Book a tour"
+            onClick={() => onNav('Contact')}
+          />
         </div>
       </section>
 
@@ -236,7 +255,7 @@ function AcademicsScreen({ onNav }) {
           </div>
           <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-4)' }}>
             {garage.map((g, i) => {
-              const accent = i % 2 === 0 ? 'navy' : 'red';
+              const accent = crestAccents[i % 4];
               return (
                 <div key={g.t} style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', boxShadow: 'var(--shadow-sm)' }}>
                   <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-md)', background: `var(--${accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
@@ -258,6 +277,20 @@ function AcademicsScreen({ onNav }) {
         </div>
       </section>
 
+      {/* ===================== Mid-page CTA ===================== */}
+      <section style={{ background: 'var(--surface-page)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-7) var(--space-5)' }}>
+          <CTABand
+            accent="green"
+            eyebrow="Playgroup to Grade 5"
+            title="Curious how your child would fit in?"
+            subtitle="Speak to our admissions team about the right stage for your child."
+            buttonLabel="Enquire now"
+            onClick={() => onNav('Admissions', 'enquiry-form')}
+          />
+        </div>
+      </section>
+
       {/* ===================== Friends of Quran & Role Model ===================== */}
       <section style={{ background: 'var(--surface-subtle)', position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--border)' }}>
         <EduMotifs tone="light" density="light" />
@@ -271,20 +304,20 @@ function AcademicsScreen({ onNav }) {
             <PhotoFrame src="../../assets/photos/foq-quran.png" alt="Friends of Quran programme" accent="navy" ratio="16 / 9" caption="The best of you are those who learn the Quran and teach it" />
           </div>
           <div className="ngis-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-5)' }}>
-            <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: '4px solid var(--navy-500)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-lg)', background: 'var(--navy-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
-                <Icon name="bookOpen" size={30} color="var(--navy-600)" />
+            <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: '4px solid var(--green-500)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-lg)', background: 'var(--green-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                <Icon name="bookOpen" size={30} color="var(--green-600)" />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-2xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 10px' }}>Friends of Quran</h3>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 10px' }}>Friends of Quran</h3>
               <p style={{ fontSize: 'var(--text-base)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)', margin: 0 }}>
                 A daily companionship with the Holy Quran, building a lasting relationship with its words, meaning and guidance. Supported by compulsory Arabic, students grow in recitation, understanding and love for their faith.
               </p>
             </div>
-            <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: '4px solid var(--red-500)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-lg)', background: 'var(--red-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
-                <Icon name="star" size={30} color="var(--red-600)" />
+            <div style={{ background: 'var(--surface-card)', border: '1px solid var(--border)', borderTop: '4px solid var(--gold-500)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-7)', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ width: 60, height: 60, borderRadius: 'var(--radius-lg)', background: 'var(--gold-50)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                <Icon name="star" size={30} color="var(--gold-700)" />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-2xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 10px' }}>Prophet Muhammad ﷺ as our Role Model</h3>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '0 0 10px' }}>Prophet Muhammad ﷺ as our Role Model</h3>
               <p style={{ fontSize: 'var(--text-base)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)', margin: 0 }}>
                 The Role Model (SAWW) Programme places the character of the Prophet Muhammad ﷺ at the heart of school life, guiding how students speak, share, lead and treat one another, so values are lived every day.
               </p>
@@ -319,7 +352,7 @@ function AcademicsScreen({ onNav }) {
           </div>
           <div className="ngis-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
             {roles.map((r, i) => {
-              const accent = i % 2 === 0 ? 'navy' : 'red';
+              const accent = crestAccents[i % 4];
               return (
                 <Card key={r.who} accent={accent}>
                   <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-md)', background: `var(--${accent}-50)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
@@ -343,7 +376,7 @@ function AcademicsScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 'var(--leading-tight)' }}>Ready to begin the journey?</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '12px 0 0' }}>Enroll your child in Pakistan&rsquo;s first ETM-powered school.</p>
           </div>
-          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions')} style={{ flexShrink: 0 }}>Begin admission</Button>
+          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions', 'enquiry-form')} style={{ flexShrink: 0 }}>Begin admission</Button>
         </div>
       </section>
     </main>

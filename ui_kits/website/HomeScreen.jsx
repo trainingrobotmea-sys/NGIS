@@ -3,48 +3,18 @@
 // Hero headline — types out the current slogan, then rotates through a short
 // list of USPs, always returning to the slogan. Respects prefers-reduced-motion
 // by rendering the slogan statically with no animation.
-const CREST = {
-  green: '#2FA84F',   // top-left quadrant
-  navy: '#16305C',   // top-right quadrant
-  sky: '#2AACE2',   // bottom-left quadrant
-  gold: '#F4B400',   // bottom-right quadrant
-};
 
-function HeroVideo() {
-  const videoRef = React.useRef(null);
-
-  React.useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    // Force muted as a real property — React's muted prop is unreliable for autoplay
-    v.muted = true;
-    v.defaultMuted = true;
-    const playPromise = v.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(err => {
-        console.warn('Hero video autoplay blocked or failed:', err);
-      });
-    }
-  }, []);
-
+function HeroBackground() {
   return (
-    <video
-      ref={videoRef}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster="../../assets/photos/hero-students.png"
-      onError={(e) => console.error('Hero video failed to load:', e.currentTarget.error)}
+    <div
+      aria-hidden="true"
       style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', zIndex: 0,
+        backgroundImage: 'url(../../assets/photos/hero-students.png)',
+        backgroundSize: 'cover', backgroundPosition: 'center',
+        zIndex: 0,
       }}
-    >
-      <source src="../../assets/video/hero-campus.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    ></div>
   );
 }
 
@@ -138,7 +108,7 @@ function TypewriterHeading({ phrases, style }) {
 function HomeScreen({ onNav }) {
   const { Button, Stat, Card, EyebrowLabel, Badge } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
-  const { PATTERNS, NAVY_GRADIENT, SectionDecor, PhotoFrame, EduMotifs, WaveDivider } = window.Decor;
+  const { PATTERNS, NAVY_GRADIENT, CREST, SectionDecor, PhotoFrame, EduMotifs, WaveDivider } = window.Decor;
 
   // The four crest quadrants → the ETM education model.
   // pillars data — one crest color per quadrant, in crest reading order
@@ -152,10 +122,10 @@ function HomeScreen({ onNav }) {
 
   // Proof-band facts (shown as cards below the hero).
   const facts = [
-    { value: '1st', label: 'ETM-powered school in Pakistan', color: 'red' },
+    { value: '1st', label: 'ETM-powered school in Pakistan', color: 'green' },
     { value: 'Play–G5', label: <React.Fragment>Playgroup to Grade 5<br />Ages 3&ndash;11</React.Fragment>, color: 'navy' },
-    { value: 'Arabic', label: 'Compulsory language of the Quran', color: 'red' },
-    { value: 'Zero', label: 'Homework · rote learning · exam pressure', color: 'navy' },
+    { value: 'Arabic', label: 'Compulsory language of the Quran', color: 'blue' },
+    { value: 'Zero', label: 'Homework · rote learning · exam pressure', color: 'gold' },
   ];
 
   // The five published ETM standards — the "standards stack".
@@ -175,13 +145,13 @@ function HomeScreen({ onNav }) {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: 'calc(100vh - var(--header-height))',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
       }}>
-        {/* Background video */}
-        <HeroVideo />
+        {/* Background image (was a video, now a static poster) */}
+        <HeroBackground />
 
         {/* Dark scrim for text readability — reuses your navy gradient as a tint */}
         <div style={{
@@ -212,7 +182,8 @@ function HomeScreen({ onNav }) {
               A Playgroup&ndash;Grade&nbsp;5 movement combining South Korean academic standards, a STEAM-integrated curriculum and deep-rooted Islamic values.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Button variant="primary" size="lg" onClick={() => onNav('Admissions')}>Apply for admission</Button>
+              <Button variant="primary" size="lg" onClick={() => onNav('Admissions', 'enquiry-form')}>Apply for admission</Button>
+              <Button variant="secondary" size="lg" onClick={() => onNav('Contact')}>Book a tour</Button>
             </div>
           </div>
         </div>
@@ -424,9 +395,9 @@ function HomeScreen({ onNav }) {
             <Button variant="ghost" iconRight={<Icon name="arrowRight" size={17} />} onClick={() => onNav('Gallery')}>View the gallery</Button>
           </div>
           <div className="ngis-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
-            <PhotoFrame src="../../assets/photos/innovate-lab.png" alt="Innovation lab" accent="red" style={{ borderTop: `3px solid ${CREST.green}` }} ratio="4 / 3" />
-            <PhotoFrame src="../../assets/photos/foq-quran.png" alt="Friends of Quran" accent="navy" style={{ borderTop: `3px solid ${CREST.sky}` }} ratio="4 / 3" />
-            <PhotoFrame src="../../assets/photos/etm-garage.png" alt="ETM Garage" accent="red" style={{ borderTop: `3px solid ${CREST.gold}` }} ratio="4 / 3" />
+            <PhotoFrame src="../../assets/photos/innovate-lab.png" alt="Innovation lab" accent="green" ratio="4 / 3" />
+            <PhotoFrame src="../../assets/photos/foq-quran.png" alt="Friends of Quran" accent="blue" ratio="4 / 3" />
+            <PhotoFrame src="../../assets/photos/etm-garage.png" alt="ETM Garage" accent="gold" ratio="4 / 3" />
           </div>
         </div>
       </section>
@@ -443,7 +414,7 @@ function HomeScreen({ onNav }) {
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 'var(--leading-tight)' }}>Join the ETM Movement</h2>
             <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.82)', margin: '12px 0 0' }}>Make your child relevant for tomorrow&rsquo;s world. Book a tour or begin your application today.</p>
           </div>
-          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions')} style={{ flexShrink: 0 }}>Begin admission</Button>
+          <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav('Admissions', 'enquiry-form')} style={{ flexShrink: 0 }}>Begin admission</Button>
         </div>
       </section>
     </main>

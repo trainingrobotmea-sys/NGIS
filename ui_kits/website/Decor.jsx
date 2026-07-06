@@ -3,6 +3,18 @@
 // metallic accent. Provides background patterns, ring motifs (echoing the crest
 // ring) and layered photo frames (the prospectus's stacked-rectangle look).
 
+// ---- Crest quadrant palette ------------------------------------------------
+// The four crest quadrant colors, in reading order. Used to cycle accents
+// across cards/tiles/borders instead of the plain red/navy pairing, wherever
+// a section needs more than one accent color.
+const CREST = {
+  green: '#2FA84F',   // top-left quadrant
+  navy: '#16305C',   // top-right quadrant
+  sky: '#2AACE2',   // bottom-left quadrant
+  gold: '#F4B400',   // bottom-right quadrant
+};
+const CREST_CYCLE = [CREST.green, CREST.navy, CREST.sky, CREST.gold];
+
 // ---- Background patterns (pure CSS, no asset loading) --------------------
 const PATTERNS = {
   // faint dot grid for light surfaces
@@ -156,6 +168,32 @@ function WaveDivider({ fill = 'var(--surface-page)', flip = false, height = 56 }
   );
 }
 
+// ---- Inline CTA band ------------------------------------------------------
+// A compact, light-touch call-to-action strip for mid-page placement — less
+// prominent than a full navy CTA section, so it doesn't compete with the
+// hero/closing CTAs on the same page.
+function CTABand({ eyebrow, title, subtitle, buttonLabel, onClick, accent = 'gold' }) {
+  const Icon = window.Icon;
+  const { Button } = window.NGISDesignSystem_f6dc23;
+  return (
+    <div style={{
+      background: `var(--${accent}-50)`, border: '1px solid var(--border)',
+      borderLeft: `4px solid var(--${accent}-500)`, borderRadius: 'var(--radius-lg)',
+      padding: 'var(--space-6) var(--space-7)', display: 'flex', alignItems: 'center',
+      justifyContent: 'space-between', gap: 'var(--space-5)', flexWrap: 'wrap',
+    }}>
+      <div>
+        {eyebrow && (
+          <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 'var(--text-xs)', textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)', color: `var(--${accent}-700)`, marginBottom: 6 }}>{eyebrow}</div>
+        )}
+        <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--text-strong)', lineHeight: 'var(--leading-snug)' }}>{title}</div>
+        {subtitle && <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-body)', marginTop: 4 }}>{subtitle}</div>}
+      </div>
+      <Button variant="primary" size="md" iconRight={<Icon name="arrowRight" size={16} />} onClick={onClick} style={{ flexShrink: 0 }}>{buttonLabel}</Button>
+    </div>
+  );
+}
+
 // ---- Multilingual class-name badge --------------------------------------
 // Shows a class's English / Korean / Arabic names — the school's signature
 // trilingual identity system.
@@ -169,4 +207,4 @@ function ClassNameStack({ en, ko, ar, accent = 'navy' }) {
   );
 }
 
-window.Decor = { PATTERNS, NAVY_GRADIENT, Rings, SectionDecor, PhotoFrame, EduMotifs, WaveDivider, ClassNameStack };
+window.Decor = { PATTERNS, NAVY_GRADIENT, CREST, CREST_CYCLE, Rings, SectionDecor, PhotoFrame, EduMotifs, WaveDivider, ClassNameStack, CTABand };

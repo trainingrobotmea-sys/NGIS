@@ -601,7 +601,7 @@ function Stat({
   }, rest), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'var(--font-serif)',
-      fontSize: 'var(--text-5xl)',
+      fontSize: 'var(--text-3xl)',
       fontWeight: 'var(--weight-bold)',
       lineHeight: 1,
       letterSpacing: 'var(--tracking-tight)',

@@ -46,17 +46,21 @@
 <script type="text/babel" src="FacultyScreen.jsx"></script>
 <script type="text/babel" src="AdmissionsScreen.jsx"></script>
 <script type="text/babel" src="GalleryScreen.jsx"></script>
+<script type="text/babel" src="WhyNgisScreen.jsx"></script>
+<script type="text/babel" src="ContactScreen.jsx"></script>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel" data-presets="react">
   function PrintApp() {
     const noop = () => {};
-    const { Header, Footer, HomeScreen, AcademicsScreen, AdmissionsScreen, GalleryScreen, FacultyScreen } = window;
+    const { Header, Footer, HomeScreen, AcademicsScreen, AdmissionsScreen, GalleryScreen, FacultyScreen, WhyNgisScreen, ContactScreen } = window;
     const screens = [
       { name: 'Home', C: HomeScreen },
       { name: 'Academics', C: AcademicsScreen },
+      { name: 'WhyNgis', C: WhyNgisScreen },
       { name: 'Faculty', C: FacultyScreen },
+      { name: 'Contact', C: ContactScreen },
       { name: 'Admissions', C: AdmissionsScreen },
       { name: 'Gallery', C: GalleryScreen },
     ];

@@ -1,13 +1,18 @@
 // NGIS website — Admissions / "Enrollment Guide" (from the NGIS Prospectus + Uniform guide)
-function AdmissionsScreen() {
+function AdmissionsScreen({ onNav }) {
   const { Card, EyebrowLabel, Button, Input, Select, Alert, Badge } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
   const { PATTERNS, NAVY_GRADIENT, SectionDecor } = window.Decor;
+  const crestAccents = ['green', 'navy', 'blue', 'gold'];
   const [submitted, setSubmitted] = React.useState(false);
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
+  const [age, setAge] = React.useState('');
   const [stage, setStage] = React.useState('');
+  const [message, setMessage] = React.useState('');
   const [errors, setErrors] = React.useState({});
+  const [sending, setSending] = React.useState(false);
+  const [sendError, setSendError] = React.useState('');
 
   const validate = () => {
     const next = {};
@@ -20,7 +25,21 @@ function AdmissionsScreen() {
   };
 
   const handleSubmit = () => {
-    if (validate()) setSubmitted(true);
+    if (!validate()) return;
+    setSending(true);
+    setSendError('');
+    fetch('send-enquiry.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, age, stage, message }),
+    })
+      .then(res => res.json().catch(() => ({ success: false })).then(data => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (ok && data.success) setSubmitted(true);
+        else setSendError('We could not send your enquiry. Please try again, or email admissions@ngis.com directly.');
+      })
+      .catch(() => setSendError('We could not send your enquiry. Please check your connection and try again.'))
+      .finally(() => setSending(false));
   };
 
   const steps = [
@@ -47,10 +66,10 @@ function AdmissionsScreen() {
   ];
 
   const safety = [
-    { icon: 'smartphone', color: 'navy', t: 'Digital Attendance System', d: 'Seamless attendance tracking that keeps parents instantly informed and connected.' },
-    { icon: 'heartPulse', color: 'red', t: 'Health Card', d: 'Healthy students lead to excellent minds. We safeguard the wellbeing of every child.' },
-    { icon: 'phone', color: 'navy', t: 'Parent Mobile Application', d: 'Stay updated with academics, notices and progress, anytime, anywhere.' },
-    { icon: 'shieldCheck', color: 'red', t: 'Security & Safety', d: 'A secure, well-monitored environment where children learn with confidence.' },
+    { icon: 'smartphone', color: 'green', t: 'Digital Attendance System', d: 'Seamless attendance tracking that keeps parents instantly informed and connected.' },
+    { icon: 'heartPulse', color: 'navy', t: 'Health Card', d: 'Healthy students lead to excellent minds. We safeguard the wellbeing of every child.' },
+    { icon: 'phone', color: 'blue', t: 'Parent Mobile Application', d: 'Stay updated with academics, notices and progress, anytime, anywhere.' },
+    { icon: 'shieldCheck', color: 'gold', t: 'Security & Safety', d: 'A secure, well-monitored environment where children learn with confidence.' },
   ];
 
   return (
@@ -60,18 +79,22 @@ function AdmissionsScreen() {
         background: NAVY_GRADIENT,
         position: 'relative',
         overflow: 'hidden',
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: 'calc(100vh - var(--header-height))',
         display: 'flex',
         alignItems: 'center',
       }}>
         <div style={{ ...PATTERNS.gridNavy, position: 'absolute', inset: 0, opacity: 0.6 }}></div>
         <SectionDecor tone="navy" />
-        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-8) var(--space-5)', width: '100%' }}>
+        <div style={{ position: 'relative', maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', width: '100%' }}>
           <EyebrowLabel color="gold">Enrollment Guide</EyebrowLabel>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-6xl)', fontWeight: 700, color: '#fff', margin: '18px 0 0', lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-tight)' }}>Begin your child&rsquo;s journey</h1>
           <p style={{ fontSize: 'var(--text-xl)', color: 'rgba(255,255,255,0.82)', margin: '20px 0 0', maxWidth: 660, lineHeight: 'var(--leading-normal)' }}>
             We warmly invite you to be part of Pakistan&rsquo;s first ETM-powered school. Here is everything you need to enroll, InshaAllah.
           </p>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24 }}>
+            <Button variant="primary" size="lg" iconRight={<Icon name="arrowRight" size={18} />} onClick={() => onNav && onNav('Admissions', 'enquiry-form')}>Start your enquiry</Button>
+            <Button variant="secondary" size="lg" onClick={() => onNav && onNav('Contact')}>Speak to admissions</Button>
+          </div>
         </div>
       </section>
 
@@ -112,7 +135,7 @@ function AdmissionsScreen() {
                 <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Boys</h3>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 2 }}>
-                <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--red-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>G</span>
+                <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-md)', background: 'var(--gold-500)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'var(--text-base)' }}>G</span>
                 <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700, color: 'var(--text-strong)', margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--tracking-wide)' }}>Girls</h3>
               </div>
               {uniformBoys.map((u, i) => (
@@ -121,7 +144,7 @@ function AdmissionsScreen() {
                     <Icon name="check" size={16} color="var(--navy-600)" style={{ marginTop: 2, flexShrink: 0 }} />{u}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 'var(--text-sm)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
-                    <Icon name="check" size={16} color="var(--red-600)" style={{ marginTop: 2, flexShrink: 0 }} />{uniformGirls[i]}
+                    <Icon name="check" size={16} color="var(--gold-700)" style={{ marginTop: 2, flexShrink: 0 }} />{uniformGirls[i]}
                   </div>
                 </React.Fragment>
               ))}
@@ -130,13 +153,13 @@ function AdmissionsScreen() {
           </Card>
 
           {/* Required documents */}
-          <Card accent="red" padding="var(--space-7)">
-            <EyebrowLabel color="red">Required documents</EyebrowLabel>
+          <Card accent="green" padding="var(--space-7)">
+            <EyebrowLabel color="green">Required documents</EyebrowLabel>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--text-strong)', margin: '10px 0 20px' }}>What to bring</h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
               {documents.map(d => (
                 <li key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 'var(--text-base)', color: 'var(--text-body)', lineHeight: 'var(--leading-normal)' }}>
-                  <Icon name="check" size={18} color="var(--red-600)" style={{ marginTop: 2, flexShrink: 0 }} />{d}
+                  <Icon name="check" size={18} color="var(--green-600)" style={{ marginTop: 2, flexShrink: 0 }} />{d}
                 </li>
               ))}
             </ul>
@@ -168,7 +191,7 @@ function AdmissionsScreen() {
       </section>
 
       {/* Enquiry form + contact */}
-      <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border)' }}>
+      <section id="enquiry-form" style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border)', scrollMarginTop: 'var(--header-height)' }}>
         <div className="ngis-feature-grid" style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: 'var(--space-9) var(--space-5)', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'var(--space-7)', alignItems: 'start' }}>
           {/* Form */}
           <Card padding="var(--space-7)">
@@ -189,7 +212,8 @@ function AdmissionsScreen() {
                     error={errors.email} />
                 </div>
                 <div className="ngis-grid-2-sm" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-                  <Input label="Child&rsquo;s age" placeholder="e.g. 6" />
+                  <Input label="Child&rsquo;s age" placeholder="e.g. 6" value={age}
+                    onChange={e => setAge(e.target.value)} />
                   <div>
                     <Select label="Stage of interest" required value={stage}
                       style={errors.stage ? { border: '1px solid var(--danger)' } : undefined}
@@ -198,8 +222,10 @@ function AdmissionsScreen() {
                     {errors.stage && <div style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--danger)' }}>{errors.stage}</div>}
                   </div>
                 </div>
-                <Input label="Message" placeholder="Tell us a little about your child (optional)" />
-                <Button variant="primary" size="lg" fullWidth onClick={handleSubmit}>Submit enquiry</Button>
+                <Input label="Message" placeholder="Tell us a little about your child (optional)" value={message}
+                  onChange={e => setMessage(e.target.value)} />
+                {sendError && <Alert tone="danger">{sendError}</Alert>}
+                <Button variant="primary" size="lg" fullWidth onClick={handleSubmit} disabled={sending}>{sending ? 'Sending…' : 'Submit enquiry'}</Button>
                 <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', margin: 0, textAlign: 'center' }}>We respect your privacy. Your details are used only to respond to this enquiry.</p>
               </div>
             )}

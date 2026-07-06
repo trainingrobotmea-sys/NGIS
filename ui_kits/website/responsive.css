@@ -22,6 +22,14 @@ img, svg {
   max-width: 100%;
 }
 
+/* ---- Heading scale ---------------------------------------------------- */
+/* Pages set h1/h2 font-size inline via the --text-4xl/5xl/6xl tokens (those
+   tokens are shared with non-heading elements — stat numbers, pull-quotes,
+   the ETM-equation "+" glyphs — so they can't just be redefined). Override
+   the elements directly instead, uniformly, at every breakpoint. */
+h1 { font-size: 26px !important; }
+h2 { font-size: 22px !important; }
+
 /* ---- Multi-column grids: repeat(N, 1fr) --------------------------------- */
 @media (max-width: 1024px) {
   .ngis-grid-4, .ngis-grid-5, .ngis-grid-6 { grid-template-columns: repeat(2, 1fr) !important; }
@@ -61,13 +69,16 @@ img, svg {
 }
 
 /* ---- Header / mobile nav ------------------------------------------------ */
-@media (max-width: 900px) {
+/* Seven nav links + logo + Apply button need more room than the old 5-link
+   nav did before they'd wrap/overflow, so the switch to the hamburger menu
+   happens at a wider breakpoint than the rest of the layout. */
+@media (max-width: 1180px) {
   :root { --header-height: 64px; }
   .ngis-nav { display: none !important; }
   .ngis-header-cta { display: none !important; }
   .ngis-nav-toggle { display: flex !important; }
 }
-@media (min-width: 901px) {
+@media (min-width: 1181px) {
   .ngis-nav-mobile { display: none !important; }
 }
 @media (max-width: 420px) {

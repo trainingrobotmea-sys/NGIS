@@ -2,9 +2,19 @@
 function Header({ active, onNav }) {
   const { Button } = window.NGISDesignSystem_f6dc23;
   const Icon = window.Icon;
-  const links = ['Home', 'Academics', 'Faculty', 'Admissions', 'Gallery'];
+  // Display label vs. internal route — lets the nav read "Why NGIS" / "FDC" /
+  // "Contact Us" while routing to the existing WhyNgis / Faculty / Contact screens.
+  const links = [
+    { label: 'Home', route: 'Home' },
+    { label: 'Academics', route: 'Academics' },
+    { label: 'Why NGIS', route: 'WhyNgis' },
+    { label: 'FDC', route: 'Faculty' },
+    { label: 'Contact Us', route: 'Contact' },
+    { label: 'Admissions', route: 'Admissions' },
+    { label: 'Gallery', route: 'Gallery' },
+  ];
   const [open, setOpen] = React.useState(false);
-  const go = (r) => { setOpen(false); onNav(r); };
+  const go = (r, anchor) => { setOpen(false); onNav(r, anchor); };
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50, background: 'var(--surface-navy)',
@@ -18,26 +28,27 @@ function Header({ active, onNav }) {
           <img src="../../assets/ngis-logo-crest.png" alt="NGIS"
             style={{ width: 44, height: 44, objectFit: 'contain', flexShrink: 0 }} />
           <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1, gap: 1 }} className="ngis-header-title">
-            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 17, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>NextGen</span>
-            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 17, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>International School</span>
-            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 9, color: '#fff', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: 2 }}>Transforming education for better tomorrow</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 12, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>NextGen</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 12, color: '#fff', letterSpacing: '0.01em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>International School</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 7, color: '#fff', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: 2 }}>Transforming education for better tomorrow</span>
           </span>
         </a>
         <nav style={{ display: 'flex', gap: 4, marginLeft: 'auto' }} className="ngis-nav">
           {links.map(l => (
-            <a key={l} onClick={() => go(l)} style={{
+            <a key={l.route} onClick={() => go(l.route)} style={{
               padding: '8px 14px', borderRadius: 'var(--radius-md)', cursor: 'pointer',
               fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 600,
-              color: active === l ? '#fff' : 'rgba(255,255,255,0.78)',
-              background: active === l ? 'rgba(255,255,255,0.12)' : 'transparent',
+              whiteSpace: 'nowrap',
+              color: active === l.route ? '#fff' : 'rgba(255,255,255,0.78)',
+              background: active === l.route ? 'rgba(255,255,255,0.12)' : 'transparent',
               transition: 'background var(--dur-fast), color var(--dur-fast)',
             }}
-              onMouseEnter={e => { if (active !== l) e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { if (active !== l) e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; }}
-            >{l}</a>
+              onMouseEnter={e => { if (active !== l.route) e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { if (active !== l.route) e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; }}
+            >{l.label}</a>
           ))}
         </nav>
-        <Button className="ngis-header-cta" variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => go('Admissions')}>Apply</Button>
+        <Button className="ngis-header-cta" variant="primary" size="sm" iconRight={<Icon name="arrowRight" size={15} />} onClick={() => go('Admissions', 'enquiry-form')}>Apply</Button>
         <button
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen(o => !o)}
@@ -56,13 +67,18 @@ function Header({ active, onNav }) {
           background: 'var(--surface-navy)', borderTop: '1px solid rgba(255,255,255,0.12)', gap: 2,
         }}>
           {links.map(l => (
-            <a key={l} onClick={() => go(l)} style={{
+            <a key={l.route} onClick={() => go(l.route)} style={{
               padding: '12px 14px', borderRadius: 'var(--radius-md)', cursor: 'pointer',
               fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 600,
-              color: active === l ? '#fff' : 'rgba(255,255,255,0.78)',
-              background: active === l ? 'rgba(255,255,255,0.12)' : 'transparent',
-            }}>{l}</a>
+              color: active === l.route ? '#fff' : 'rgba(255,255,255,0.78)',
+              background: active === l.route ? 'rgba(255,255,255,0.12)' : 'transparent',
+            }}>{l.label}</a>
           ))}
+          <a onClick={() => go('Admissions', 'enquiry-form')} style={{
+            padding: '12px 14px', borderRadius: 'var(--radius-md)', cursor: 'pointer', marginTop: 6,
+            fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 700,
+            color: 'var(--gold-500)',
+          }}>Apply</a>
         </nav>
       )}
     </header>
