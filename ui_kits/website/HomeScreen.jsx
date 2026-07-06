@@ -5,6 +5,41 @@
 // by rendering the slogan statically with no animation.
 
 function HeroBackground() {
+  const [videoFailed, setVideoFailed] = React.useState(false);
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const v = videoRef.current;
+    if (!v || videoFailed) return;
+
+    v.muted = true;
+    v.defaultMuted = true;
+
+    const playPromise = v.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => {
+        // AbortError is just a race condition, ignore it
+        if (err.name === 'AbortError') return;
+
+        // If it's a NotAllowedError (Autoplay blocked by browser policy) 
+        // or any other playback block, force the fallback image
+        console.warn('Hero video autoplay blocked by browser:', err.name);
+        setVideoFailed(true);
+      });
+    }
+  }, [videoFailed]);
+
+  const handleError = (e) => {
+    const mediaError = e.currentTarget.error;
+    // Video elements can fire a spurious 'error' event with no MediaError
+    // attached (e.g. the browser aborting a fetch it never really started).
+    // Only treat it as a genuine failure — and fall back to the still image
+    // — when there's an actual error code to act on.
+    if (!mediaError) return;
+    console.error('Hero video failed to load:', mediaError);
+    setVideoFailed(true);
+  };
+
   return (
     <div
       aria-hidden="true"
@@ -14,7 +49,27 @@ function HeroBackground() {
         backgroundSize: 'cover', backgroundPosition: 'center',
         zIndex: 0,
       }}
-    ></div>
+    >
+      {/* Video plays over the image fallback. It stays mounted (just hidden)
+          on failure rather than being removed, so a pending play() promise
+          can't be aborted by its own element disappearing mid-flight. */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onError={handleError}
+        style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover',
+          visibility: videoFailed ? 'hidden' : 'visible',
+        }}
+      >
+        <source src="../../assets/video/hero-campus-fixed.mp4" type="video/mp4" />
+      </video>
+    </div>
   );
 }
 
