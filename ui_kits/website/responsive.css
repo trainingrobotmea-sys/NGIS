@@ -81,7 +81,7 @@ h2 { font-size: 22px !important; }
 @media (min-width: 1181px) {
   .ngis-nav-mobile { display: none !important; }
 }
-@media (max-width: 420px) {
+@media (max-width: 300px) {
   .ngis-header-title { display: none !important; }
 }
 
